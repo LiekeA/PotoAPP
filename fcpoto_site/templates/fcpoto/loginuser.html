@@ -1,0 +1,23 @@
+{% extends 'fcpoto/base.html' %}
+
+
+{% block title %} Connexion {% endblock %}
+
+
+{% block content %}
+
+CONNEXION
+
+{{ error }}
+<form action="" method="post">
+{% csrf_token %}
+{{ form.as_p }}
+
+
+
+<button type="submit">Se connecter</button>
+</form>
+
+<p>Vous n'avez pas de compte? Suivez ce lien : <a href="{% url 'signupuser' %}">Cliquez ici!</a></p>
+<a href="{% url 'reset_password' %}">Mot de passe oublié?</a></p>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'fcpoto/base.html' %}
+
+{% block title %} Inscription {% endblock %}
+
+{% block content %}
+
+<h1>Inscription</h1>
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{ error }}
+</div>
+{% endif %}
+
+<form action="" method="post">
+{% csrf_token %}
+
+
+Pseudo: {{ form.username }}
+<br>
+Email:{{ form.email }}
+<br>
+Prénom:{{ form.first_name }}
+<br>
+Nom:{{ form.last_name }}
+<br>
+Mot de passe:{{ form.password1 }}
+<br>
+Confirmez le mot de passe:{{ form.password2 }}
+<button type='submit'>S'inscrire</button>
+</form>
+
+{% endblock %}

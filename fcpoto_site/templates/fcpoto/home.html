@@ -1,1 +1,46 @@
-Bonjour
+{% extends 'fcpoto/base.html' %}
+
+
+{% block title %} FC Poto | Accueil {% endblock %}
+{% block content %}
+
+{% if user.username %}
+Bonjour {{ user.username|title }}
+{% endif %}
+<h1 id="titre">Test</h1>
+
+<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+<br>
+<br>
+
+<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+<br>
+<br>
+
+<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+<br>
+<br>
+
+<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+<br>
+<br>
+
+<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+<br>
+<br>
+
+<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+<br>
+<br>
+
+<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+<br>
+<br>
+
+<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
+<br>
+<br>
+
+
+
+{% endblock %}
