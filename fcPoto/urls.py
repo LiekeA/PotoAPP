@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from fcpoto_site import views
+from django.conf.urls.static import static
+from django.conf import settings
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -37,7 +39,12 @@ urlpatterns = [
     path('change_password/', views.change_password, name='change_password'),
     
     path('profil/', views.profile, name='profile'),
+
+    #app club
+    path('club/', include('club.urls')),
+
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 """     path('passwordresetcomplete/', views.passwordresetcomplete , name='passwordresetcomplete'),
     path('passwordresetconfirm/', views.passwordresetconfirm , name='passwordresetconfirm'),
