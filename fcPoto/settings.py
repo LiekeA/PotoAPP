@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-&=hm5c_u1*wjh%$^4yjn8iss*6k0*-n356y*uvt10fgy61_c1q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dev.fcpoto.com']
 
 
 # Application definition
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'fcPoto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fcpoto_db',
+        'NAME': 'lian7334_fcpoto_db',
         'USER': 'root',
         'PASSWORD': 'FcPoto202109_',
         'HOST': 'localhost',
