@@ -83,10 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lian7334_fcpoto_db',
-        'USER': 'root',
+        'USER': 'lian7334_simon',
         'PASSWORD': 'FcPoto202109_',
         'HOST': 'localhost',
-        'PORT': '3306',
     }
 }
 
