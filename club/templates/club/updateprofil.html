@@ -1,0 +1,25 @@
+{% extends 'fcpoto/base.html' %}
+
+{% block content %}
+<div class='text-center'>
+    
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex flex-row">
+
+            <form action="" method="post" enctype="multipart/form-data">    
+            <button type="submit" class="d-inline-block btn btn-info">Modifier</button>
+            </form>
+            
+            <form action="{% url 'club:deleteprofil' %}" method="post">
+                {% csrf_token %}
+            <button type="submit" class="d-inline-block btn btn-danger">Supprimer</button>
+            </form> 
+
+        </div>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'fcpoto/base.html' %}
+
+
+{% block title %} FC Poto | Accueil {% endblock %}
+{% block content %}
+
+
+<div class='text-center'>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>  
+    {% endif %}
+
+    {% if profil.photo_face  %} 
+    <img class="photo" src=" {{profil.photo_face.url}}" alt=""> 
+    {% endif %} 
+    {% if profil.photo_dos  %} 
+    <img class="photo" src="{{profil.photo_dos.url}}" alt=""> 
+    {% endif %} 
+    <h4>{{user.username|title}}</h4>
+    <p>Prénom : {{user.first_name|title}}</p>
+    <p>Nom : {{user.last_name|title}}</p>
+    <p>Statut : {{profil.statut}}</p>
+    <p>Numéro : {{profil.num_maillot}}</p>
+    <p>Poste : {{profil.poste}}</p>
+    <p>Né le : {{profil.date_naissance}}</p>
+    <p>{{profil.equipe.get_equipe_display}}</p>
+    <p>Au club depuis : {{profil.anciennete}}</p>
+    <p>Téléphone : {{profil.tel}}</p>
+    <p>E-mail : {{user.email}}</p>
+    <p>Adresse : {{profil.adresse}} {{profil.cp}} {{profil.ville}}</p>
+    <p>N° licence : {{profil.num_licence}}</p>
+    <p>Paiement licence : {{profil.licence_is_paid}}</p>
+    <p>Certificat médical à jour : {{profil.certif_medical}}</p>
+    <p>Signature réglement : {{profil.reglement}}</p>
+
+
+           
+        <a href="{% url 'club:updateprofil' %}">
+            <button type="submit" class="d-inline-block btn btn-info">Modifier</button>
+        </a>
+
+</div>
+
+
+{% endblock %}

@@ -25,7 +25,34 @@ SECRET_KEY = 'django-insecure-&=hm5c_u1*wjh%$^4yjn8iss*6k0*-n356y*uvt10fgy61_c1q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dev.fcpoto.com']
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1']
+
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'fcpoto_db',
+            'USER': 'root',
+            'PASSWORD': 'FcPoto202109_',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
+    }
+else:
+    ALLOWED_HOSTS = ['dev.fcpoto.com']
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'lian7334_fcpoto_db',
+            'USER': 'lian7334_simon',
+            'PASSWORD': 'FcPoto202109_',
+            'HOST': 'localhost',
+        }
+    }
+
 
 
 # Application definition
@@ -75,19 +102,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'fcPoto.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lian7334_fcpoto_db',
-        'USER': 'lian7334_simon',
-        'PASSWORD': 'FcPoto202109_',
-        'HOST': 'localhost',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -129,6 +143,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
+
+MEDIA_URL = '/media/'
+# choisi ou se mettront les médias
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

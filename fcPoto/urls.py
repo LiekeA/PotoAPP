@@ -44,10 +44,6 @@ urlpatterns = [
     path('club/', include('club.urls')),
 
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-"""     path('passwordresetcomplete/', views.passwordresetcomplete , name='passwordresetcomplete'),
-    path('passwordresetconfirm/', views.passwordresetconfirm , name='passwordresetconfirm'),
-    path('passwordresetdone/', views.passwordresetdone , name='passwordresetdone'),
-    path('passwordresetemail/', views.passwordresetemail , name='passwordresetemail'),
-    path('passwordresetform/', views.passwordresetform , name='passwordresetform'), """

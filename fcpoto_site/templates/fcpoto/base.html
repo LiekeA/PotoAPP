@@ -47,15 +47,19 @@
 
     <nav class="navbar navbar-expand-lg fixed-top py-1 container">
       <div class="container">
-
+        
+        <a href="{% url 'home' %}" class="navbar-brand text-uppercase font-weight-bold ml-2">
           <img src="{% static 'image/logo.png' %}" alt="logo" id="logo">
           <img src="{% static 'image/logoblanc.png' %}" alt="logo" id="logoblanc">
-          <a href="#" class="navbar-brand text-uppercase font-weight-bold ml-2">FC POTO</a>
-            
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
             
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto mr-2">
-                    <li class="nav-item active"><a href="#" class="nav-link text-uppercase font-weight-bold">Accueil <span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link text-uppercase font-weight-bold">Accueil <span class="sr-only">(current)</span></a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-uppercase font-weight-bold">Le club</a></li>
                     
                     <li class="nav-item dropdown">
@@ -63,9 +67,10 @@
                         équipes
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Équipe à 11</a>
-                        <a class="dropdown-item" href="#">Équipe A à 7 </a>
-                        <a class="dropdown-item" href="#">Équipe B à 7</a>
+                        <a class="dropdown-item" href="{% url 'club:viewequipe' 1 %}">Équipe à 11</a>
+                        <a class="dropdown-item" href="{% url 'club:viewequipe' 2 %}">Équipe A à 7 </a>
+                        <a class="dropdown-item" href="{% url 'club:viewequipe' 3 %}">Équipe B à 7</a>
+                        <a class="dropdown-item" href="{% url 'club:viewequipe' 4 %}">Les anciens membres</a>
                       </div>
                     </li>
                   
@@ -81,7 +86,7 @@
                         {{user.username}}
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'profile' %}">Mon profil</a>
+                        <a class="dropdown-item" href="{% url 'club:viewprofileprivate' %}">Mon profil</a>
                         <a class="dropdown-item" href="#">Équipe</a>
                         <a class="dropdown-item" href="#">Licence</a>
                         <form action="{% url 'logoutuser'  %}" method="post">

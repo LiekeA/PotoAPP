@@ -1,0 +1,171 @@
+{% extends 'fcpoto/base.html' %}
+
+
+{% block title %} FC Poto | Accueil {% endblock %}
+{% block content %}
+<div class='text-center'>
+
+    
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    
+    {{ equipe }}
+    
+        <h2>Gardien</h2>
+        <div class="container">
+          <div class="row">
+              
+            {% for joueur in joueurs %}
+            {% if joueur.poste == "gardien"  %}
+
+          
+                  <div class="card  mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+
+                      <div class="card-body">
+                          <p class="card-text">{{ joueur.user.username }}</p>
+                      </div>
+
+                      {% if joueur.photo_face %} 
+                      <div>
+                          <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
+                          <div class="overlay">
+                              <div class="text">
+                                <p class="card-text">Date de naisance :{{ joueur.date_naissance }}</p>
+                                <p class="card-text">Au club depuis :{{ joueur.anciennete }}</p>
+                              </div>
+                          </div>
+                      </div>
+                      {% endif %}
+                      
+                      <div class="card-body">
+                        <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
+                          <p class="card-text">N°{{ joueur.num_maillot }}</p>
+                          <p class="card-text">Poste :{{ joueur.get_poste_display }}</p>
+                          <p class="card-text">Age :{{ joueur.date_naissance }}</p>
+                      </div>
+
+                  </div>
+
+                {% endif %}
+              {% endfor %}
+          </div>
+      </div>
+     
+
+        <h2>Défenseurs</h2>
+        <div class="container">
+          <div class="row">
+              
+            {% for joueur in joueurs %}
+            {% if joueur.poste == "def" or joueur.poste == "lat" %}
+
+          
+                  <div class="card  mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+
+                      <div class="card-body">
+                          <p class="card-text">{{ joueur.user.username }}</p>
+                      </div>
+
+                      {% if joueur.photo_face %} 
+                      <div>
+                          <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
+                          <div class="overlay">
+                              <div class="text">Hello World</div>
+                          </div>
+                      </div>
+                      {% endif %}
+                      
+                      <div class="card-body">
+                          <p class="card-text">{{ joueur.num_maillot }}</p>
+                          <p class="card-text">{{ joueur.get_poste_display }}</p>
+                      </div>
+
+                  </div>
+
+                {% endif %}
+              {% endfor %}
+          </div>
+      </div>
+      
+
+       
+        <h2>Milieux</h2>
+        <div class="container">
+          <div class="row">
+              
+            {% for joueur in joueurs %}
+            {% if joueur.poste == "mdef" or joueur.poste == "moff"  %}
+
+          
+                  <div class="card  mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+
+                      <div class="card-body">
+                          <p class="card-text">{{ joueur.user.username }}</p>
+                      </div>
+
+                      {% if joueur.photo_face %} 
+                      <div>
+                          <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
+                          <div class="overlay">
+                              <div class="text">Hello World</div>
+                          </div>
+                      </div>
+                      {% endif %}
+                      
+                      <div class="card-body">
+                          <p class="card-text">{{ joueur.num_maillot }}</p>
+                          <p class="card-text">{{ joueur.get_poste_display }}</p>
+                      </div>
+
+                  </div>
+
+                {% endif %}
+              {% endfor %}
+          </div>
+      </div>
+        
+
+
+        <h2>Attaquants</h2>
+        <div class="container">
+            <div class="row">
+                
+                {% for joueur in joueurs %}
+                    {% if joueur.poste == "attaquant" or joueur.poste == "ailier"  %}
+
+                    
+                    <div class="card  mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+
+                        <div class="card-body">
+                            <p class="card-text">{{ joueur.user.username }}</p>
+                        </div>
+
+                        {% if joueur.photo_face %} 
+                        <div>
+                            <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
+                            <div class="overlay">
+                                <div class="text">Hello World</div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="card-body">
+                            <p class="card-text">{{ joueur.num_maillot }}</p>
+                            <p class="card-text">{{ joueur.get_poste_display }}</p>
+                        </div>
+
+                    </div>
+
+                  {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        
+     
+    
+</div>
+{% endblock %}
