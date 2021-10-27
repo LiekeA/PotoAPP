@@ -1,0 +1,129 @@
+{% extends 'fcpoto/base.html' %}
+
+
+{% block title %} FC Poto | Accueil {% endblock %}
+{% block content %}
+
+<div class="container">
+  <br>
+  <br>
+  <h5>Match</h5>
+  <br>
+  
+  <div>
+    a
+    {% for upcoming in upcomings %}
+    
+    {{ upcoming.lieu }}
+
+    {% endfor %}
+    
+    {% for last in lasts %}
+
+    {{ last.lieu }}
+
+    {% endfor %}
+  </div>
+
+<div class="row justify-content-center">
+{% for match in matchs %}
+
+  <div class="card d-inline-block col-lg-3 col-sm-1 p-0 ml-4 mr-4">
+      <div class="card-body text-center upcoming-bg p-0">
+      <p class="match-info">{{match.lieu}} , {{match.date}} {{ match.heure }} </p>
+      <div class="row justify-content-center">
+          <div class="col-3 p-0">
+          <img id="logo-match" src="{{ match.equipe.logo.url }}" alt="">
+          <p class="team-matchbox"> Fc Poto {{ match.equipe }}</p>
+          </div>
+          <div class="col-1 p-0">
+            {{ match.score_fcpoto }}
+          </div>
+          
+          <div class="col-2 p-0 versus">VS </div>
+          <div class="col-1 p-0">
+              {{match.score_adversaire}}
+          </div>
+
+          <div class="col-3 p-0">
+              <p class="team-matchbox">{{match.adversaire}}</p>
+          </div>
+      </div>
+      <div class='row'>
+        <div class="col-6">
+            <p>Saison : {{ match.saison }}</p>
+            <p> {{ match.enjeu }}</p>
+        </div>
+        <div class="col-6">
+            <p>Journée : {{ match.journee }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+<!-- <div class="card mb-3 d-inline-block col-lg-4 col-sm-12">
+    <div class="card-body text-center match-card">
+      <p class="match-title">Lieu : {{ match.lieu }}</p>
+      <div class="row">
+          <div class="col-lg-4 col-sm-12">
+            <img id="logo-match" src="{{ match.equipe.logo.url }}" alt="">
+            <p> Fc Poto {{ match.equipe }}  </p>
+          </div>
+          <div class='col-1'>{{ match.score_fcpoto }}</div>
+          <div class="col-lg-1 col-sm-12">
+            <p>-</p>
+          </div>
+          <div class='col-1'>{{ match.score_adversaire }}</div>
+          <div class="col-lg-4 col-sm-12">
+            <p>  {{ match.adversaire }}</p>
+          </div>
+      </div>
+      <div class='row'>
+        <div class="col-6">
+            <p>Saison : {{ match.saison }}</p>
+            <p> {{ match.enjeu }}</p>
+        </div>
+        <div class="col-6">
+            <p>Journée : {{ match.journee }}</p>
+            <p>{{ match.date }} {{ match.heure }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div> -->
+  
+  {% endfor %}
+</div>
+ 
+<div>
+  <!-- classement -->
+  <ol>
+    
+    <table class="table table-stripped col-5">
+      <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>Points</th>
+          <th>Equipe</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for team in allteams %}
+        <tr>
+        <th scope="row"> {{ forloop.counter }} </th>
+        <td>{{ team.0 }}</td>
+        <td>{{ team.1 }}</td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  
+  </ol>
+
+</div>
+
+
+{% endblock %}

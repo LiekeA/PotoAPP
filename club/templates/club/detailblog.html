@@ -1,0 +1,29 @@
+{% extends 'fcpoto/base.html' %}
+
+{% block title %} FC POTO | Blog {% endblock %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class='container text-center'>
+    {% if blog.photo %}
+            
+            
+    <img  class="card-img-top" src="{{ blog.photo.url }}" alt="Card image" style='width:100%;'>
+
+
+{% endif %}
+    <h2 class='text-info'> {{ blog.titre }} </h2>
+    
+ 
+    <h4 class="text-black-50 font-weight-light font-italic"> {{ blog.date }} </h4>
+    
+
+    <p> {{ blog.contenu }} </p>
+    
+    <p class='float-right text-info'> {{ blog.auteur.user.username }} </p>
+
+</div>
+{% endblock %}

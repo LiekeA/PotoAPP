@@ -6,11 +6,46 @@ from django.contrib.auth import login, logout, authenticate, update_session_auth
 from django import forms
 from fcpoto_site.forms import RegisterForm
 from django.contrib import messages
+from club.models import Match, Emploi, Profil, Blog
+from fcpoto_site.models import Partenaire
+from django.utils import timezone
+from datetime import timedelta, datetime, date
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'fcpoto/home.html')
+    now = timezone.now()
+    
+    #dernier match et match suivants des 3 équipes
+    last11 = Match.objects.filter(date__lt=now, equipe_id=1).order_by('-date')[:1].select_related('equipe', 'adversaire')
+    upcomings11 = Match.objects.filter(date__gte=now, equipe_id=1).order_by('date')[:1].select_related('equipe', 'adversaire')
+
+    last7a = Match.objects.filter(date__lt=now, equipe_id=2).order_by('-date')[:1].select_related('equipe', 'adversaire')
+    upcomings7a = Match.objects.filter(date__gte=now, equipe_id=2).order_by('date')[:1].select_related('equipe', 'adversaire')
+    
+    last7b = Match.objects.filter(date__lt=now, equipe_id=3).order_by('-date')[:1].select_related('equipe', 'adversaire')
+    upcomings7b = Match.objects.filter(date__gte=now, equipe_id=3).order_by('date')[:1].select_related('equipe', 'adversaire')
+
+    #3 derniers blog reseau pro
+    emploi = Emploi.objects.all().order_by('-id')[:3].select_related('profil')
+    print(emploi.query)
+    
+    #entreprise partenaires
+    partenaires = Partenaire.objects.all()
+
+    #anniversaires
+    now_day, now_month = now.day, now.month
+    today_anniv = Profil.objects.filter(date_naissance__day=now_day, date_naissance__month=now_month)
+
+    month_anniv = Profil.objects.filter(date_naissance__month=now_month, date_naissance__day__gt=now_day)
+    print(month_anniv.query)
+
+    #blog
+    blogs = Blog.objects.all().order_by('-date')[:3]
+
+   
+
+    return render(request, 'fcpoto/home.html', {'upcomings7a':upcomings7a , 'last7a':last7a, 'upcomings7b':upcomings7b , 'last7b':last7b,'upcomings11':upcomings11 , 'last11':last11, 'emploi':emploi, 'partenaires':partenaires, 'today_anniv':today_anniv,'month_anniv':month_anniv, 'blogs':blogs})
 
 def signupuser(request):
     if request.method == 'GET':
@@ -32,25 +67,6 @@ def signupuser(request):
         else:
             return render(request, 'fcpoto/signupuser.html', {'form': RegisterForm(), 'error': form.errors})
         
-        """ form = RegisterForm(request.POST)
-        if form.is_valid():
-            try:
-                user = form.save() 
-                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
-                user.first_name = form.cleaned_data.get('first_name')
-                user.last_name = form.cleaned_data.get('last_name')
-                user.email = form.cleaned_data.get('email')
-                user.save()
-                login(request, user)
-                messages.success(request, "Registration successful." )
-                return redirect('home')
-            except IntegrityError:
-                return render(request, 'fcpoto/signupuser.html', {'form': RegisterForm(), 'error': 'Ce pseudo est déjà pris'})
-        else:
-            form = RegisterForm(request.POST)
-            return render (request, 'fcpoto/signupuser.html', {"form":form})  
-            return render(request, 'fcpoto/signupuser.html', {'form': RegisterForm(), 'error': form.errors})    """
-
 
 def logoutuser(request):
     if request.method == 'POST':

@@ -1,0 +1,21 @@
+{% extends 'fcpoto/base.html' %}
+
+
+{% block title %} FC Poto | Création Blog {% endblock %}
+{% block content %}
+<div class='text-center'>
+
+    
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type='submit' class="btn btn-success">Créer</button>
+    </form>
+</div>
+{% endblock %}

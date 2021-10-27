@@ -23,13 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&=hm5c_u1*wjh%$^4yjn8iss*6k0*-n356y*uvt10fgy61_c1q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-""" if DEBUG:
+if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1']
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+    # Database
+    # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
     DATABASES = {
         'default': {
@@ -41,17 +41,17 @@ DEBUG = True
             'PORT': '3306',
         }
     }
-else: """
-ALLOWED_HOSTS = ['dev.fcpoto.com']
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lian7334_fcpoto_db',
-        'USER': 'lian7334_simon',
-        'PASSWORD': 'FcPoto202109_',
-        'HOST': 'localhost',
+else:
+    ALLOWED_HOSTS = ['dev.fcpoto.com']
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'lian7334_fcpoto_db',
+            'USER': 'lian7334_simon',
+            'PASSWORD': 'FcPoto202109_',
+            'HOST': 'localhost',
+        }
     }
-}
 
 
 
@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'fcpoto_site',
     'club',
+    'tresorerie',
+    'shop',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only

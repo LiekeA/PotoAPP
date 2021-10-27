@@ -23,32 +23,28 @@
             {% if joueur.poste == "gardien"  %}
 
           
-                  <div class="card  mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+            <div class="card p-0 mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+                        
+                {% if joueur.photo_face %} 
+                <div>
+                    <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
+                    <div class="overlay">
+                        <div class="text">
+                           <p> N°{{ joueur.num_maillot }} </p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="card-body py-1 bgblue">
+                    <p class="card-text">Surnom : {{ joueur.user.username }}</p>
+                    <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
+                    <p class="card-text">{{ joueur.get_poste_display }}</p>
+                </div>
+                
+                
 
-                      <div class="card-body">
-                          <p class="card-text">{{ joueur.user.username }}</p>
-                      </div>
-
-                      {% if joueur.photo_face %} 
-                      <div>
-                          <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
-                          <div class="overlay">
-                              <div class="text">
-                                <p class="card-text">Date de naisance :{{ joueur.date_naissance }}</p>
-                                <p class="card-text">Au club depuis :{{ joueur.anciennete }}</p>
-                              </div>
-                          </div>
-                      </div>
-                      {% endif %}
-                      
-                      <div class="card-body">
-                        <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
-                          <p class="card-text">N°{{ joueur.num_maillot }}</p>
-                          <p class="card-text">Poste :{{ joueur.get_poste_display }}</p>
-                          <p class="card-text">Age :{{ joueur.date_naissance }}</p>
-                      </div>
-
-                  </div>
+            </div>
 
                 {% endif %}
               {% endfor %}
@@ -64,27 +60,28 @@
             {% if joueur.poste == "def" or joueur.poste == "lat" %}
 
           
-                  <div class="card  mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+            <div class="card p-0 mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+                        
+                {% if joueur.photo_face %} 
+                <div>
+                    <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
+                    <div class="overlay">
+                        <div class="text">
+                           <p> N°{{ joueur.num_maillot }} </p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="card-body py-1 bgblue">
+                    <p class="card-text">Surnom : {{ joueur.user.username }}</p>
+                    <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
+                    <p class="card-text">{{ joueur.get_poste_display }}</p>
+                </div>
+                
+                
 
-                      <div class="card-body">
-                          <p class="card-text">{{ joueur.user.username }}</p>
-                      </div>
-
-                      {% if joueur.photo_face %} 
-                      <div>
-                          <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
-                          <div class="overlay">
-                              <div class="text">Hello World</div>
-                          </div>
-                      </div>
-                      {% endif %}
-                      
-                      <div class="card-body">
-                          <p class="card-text">{{ joueur.num_maillot }}</p>
-                          <p class="card-text">{{ joueur.get_poste_display }}</p>
-                      </div>
-
-                  </div>
+            </div>
 
                 {% endif %}
               {% endfor %}
@@ -101,28 +98,28 @@
             {% if joueur.poste == "mdef" or joueur.poste == "moff"  %}
 
           
-                  <div class="card  mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+            <div class="card p-0 mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+                        
+                {% if joueur.photo_face %} 
+                <div>
+                    <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
+                    <div class="overlay">
+                        <div class="text">
+                           <p> N°{{ joueur.num_maillot }} </p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="card-body py-1 bgblue">
+                    <p class="card-text">Surnom : {{ joueur.user.username }}</p>
+                    <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
+                    <p class="card-text">{{ joueur.get_poste_display }}</p>
+                </div>
+                
+                
 
-                      <div class="card-body">
-                          <p class="card-text">{{ joueur.user.username }}</p>
-                      </div>
-
-                      {% if joueur.photo_face %} 
-                      <div>
-                          <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
-                          <div class="overlay">
-                              <div class="text">Hello World</div>
-                          </div>
-                      </div>
-                      {% endif %}
-                      
-                      <div class="card-body">
-                          <p class="card-text">{{ joueur.num_maillot }}</p>
-                          <p class="card-text">{{ joueur.get_poste_display }}</p>
-                      </div>
-
-                  </div>
-
+            </div>
                 {% endif %}
               {% endfor %}
           </div>
@@ -138,25 +135,26 @@
                     {% if joueur.poste == "attaquant" or joueur.poste == "ailier"  %}
 
                     
-                    <div class="card  mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
-
-                        <div class="card-body">
-                            <p class="card-text">{{ joueur.user.username }}</p>
-                        </div>
-
+                    <div class="card p-0 mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
+                        
                         {% if joueur.photo_face %} 
                         <div>
                             <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
                             <div class="overlay">
-                                <div class="text">Hello World</div>
+                                <div class="text">
+                                   <p> N°{{ joueur.num_maillot }} </p>
+                                </div>
                             </div>
                         </div>
                         {% endif %}
                         
-                        <div class="card-body">
-                            <p class="card-text">{{ joueur.num_maillot }}</p>
+                        <div class="card-body py-1 bgblue">
+                            <p class="card-text">Surnom : {{ joueur.user.username }}</p>
+                            <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
                             <p class="card-text">{{ joueur.get_poste_display }}</p>
                         </div>
+                        
+                        
 
                     </div>
 
@@ -165,7 +163,11 @@
             </div>
         </div>
         
-     
+        {% if equipe.equipe != 'ancien' %}
+        <a href="{% url 'club:viewmatch' equipe.id %}">
+            <button type="submit" class="d-inline-block btn btn-info">Tout les matchs</button>
+        </a>
+        {% endif %}
     
 </div>
 {% endblock %}

@@ -35,6 +35,11 @@
     <p>Certificat médical à jour : {{profil.certif_medical}}</p>
     <p>Signature réglement : {{profil.reglement}}</p>
 
+    {% if emploi.id %}
+    <h3>Emploi</h3>
+
+    <p>{{ emploi.titre }}</p>
+    {% endif %}
 
            
         <a href="{% url 'club:updateprofil' %}">

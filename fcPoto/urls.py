@@ -43,6 +43,9 @@ urlpatterns = [
     #app club
     path('club/', include('club.urls')),
 
+    #app shop
+    path('shop/', include('shop.urls')),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

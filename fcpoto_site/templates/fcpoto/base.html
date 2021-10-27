@@ -32,6 +32,10 @@
       rel="stylesheet"
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
  <title> {% block title %} {% endblock %}  </title>
 
   </head>
@@ -42,28 +46,31 @@
   
   
   
-  
+  {% if request.path == '/' %}
+  <nav class="navbar home navbar-expand-lg fixed-top py-1 ">
+  {% else %}
   <header class="header">
-
-    <nav class="navbar navbar-expand-lg fixed-top py-1 container">
-      <div class="container">
+    
+    <nav class="navbar navbar-expand-lg fixed-top py-1 ">
+  {% endif %}
+      <div class="container-fluid">
         
-        <a href="{% url 'home' %}" class="navbar-brand text-uppercase font-weight-bold ml-2">
+        <a href="{% url 'home' %}" class="navbar-brand text-uppercase font-weight-bold pl-5 ml-5">
           <img src="{% static 'image/logo.png' %}" alt="logo" id="logo">
           <img src="{% static 'image/logoblanc.png' %}" alt="logo" id="logoblanc">
         </a>
         
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
             
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto mr-2">
-                    <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link text-uppercase font-weight-bold">Accueil <span class="sr-only">(current)</span></a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-uppercase font-weight-bold">Le club</a></li>
+                    <li class="nav-item active mr-5"><a href="{% url 'home' %}" class="nav-link text-uppercase font-weight-bold">Accueil <span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item mx-3"><a href="#" class="nav-link text-uppercase font-weight-light">Le club</a></li>
                     
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item dropdown mx-3">
+                      <a class="nav-link dropdown-toggle text-uppercase font-weight-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         équipes
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -75,20 +82,20 @@
                     </li>
                   
 
-                    <li class="nav-item"><a href="#" class="nav-link text-uppercase font-weight-bold">News</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-uppercase font-weight-bold">Réseau pro</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-uppercase font-weight-bold">Poto shop</a></li>
+                    <li class="nav-item mx-3"><a href="{% url 'club:viewblogs' %}" class="nav-link text-uppercase font-weight-light">News</a></li>
+                    <li class="nav-item ml-3 mr-5"><a href="{% url 'club:viewemploi' %}" class="nav-link text-uppercase font-weight-light">Réseau pro</a></li>
+                    <li class="nav-item mr-5"><a href="{% url 'shop:potoShop' %}" class="nav-link text-uppercase font-weight-bold">Poto shop</a></li>
                     
                     {% if user.is_authenticated %}
 
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown mx-5 pr-5">
                       <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{user.username}}
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'club:viewprofileprivate' %}">Mon profil</a>
                         <a class="dropdown-item" href="#">Équipe</a>
-                        <a class="dropdown-item" href="#">Licence</a>
+                        <a class="dropdown-item" href="{% url 'club:licencePayment' %}">Licence</a>
                         <form action="{% url 'logoutuser'  %}" method="post">
                           {% csrf_token %}
                           <button type="submit" class="btn btn-danger">Déconnexion</button>
@@ -97,7 +104,9 @@
                     </li>
 
                     {% else %}
-                    <a class="btn btn-success" href="{% url 'loginuser' %}">Connexion</a>
+                    <li class="mx-5 pr-5">
+                    <a class="btn btn-info px-4" href="{% url 'loginuser' %}">Connexion</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
@@ -109,12 +118,10 @@
 
 
 
-  <body  class="container-fluid" id='body'>
+  <body  id='body'>
   
-        <div class='container'>
+        <div>
 
-    <br />
-    <br />
 
     {% block content %}{% endblock %}
 

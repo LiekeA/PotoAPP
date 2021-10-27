@@ -9,6 +9,8 @@ class Equipe(models.Model):
         ('ancien', 'Les anciens membres'),
     )
     equipe = models.CharField(max_length=30, choices=EQUIPE)
+    points = models.IntegerField(default='0')
+    logo = models.ImageField(upload_to='club/images/',blank=True)
     def __str__(self):
         return self.equipe
 
@@ -48,11 +50,11 @@ class Profil(models.Model):
     photo_dos = models.ImageField(upload_to='club/images/',blank=True)
     
     def __str__(self):
-        return self.get_poste_display()
+        return self.user.username
 
 class Emploi(models.Model):
     titre = models.CharField(max_length=30)
-    description = models.CharField(max_length=200)
+    description = models.TextField(max_length=200)
     entreprise = models.CharField(max_length=30)
     entreprise_is_sponsor = models.BooleanField(default=False)
     profil = models.OneToOneField(Profil, on_delete=models.CASCADE)
@@ -68,6 +70,18 @@ class Famille(models.Model):
     lien = models.CharField(max_length=30, choices= LIEN) 
     profil = models.ForeignKey(Profil, on_delete=models.CASCADE)
 
+class Saison(models.Model):
+    saison = models.CharField(max_length=20)
+    def __str__(self):
+        return self.saison    
+
+class Adversaire(models.Model):
+    nom = models.CharField(max_length=30)
+    points = models.IntegerField(default='0') 
+    equipe = models.ForeignKey(Equipe , on_delete=models.CASCADE)
+    saison = models.ForeignKey(Saison , on_delete=models.CASCADE, default='1')
+    def __str__(self):
+        return self.nom    
 
 
 class Match(models.Model):
@@ -76,11 +90,30 @@ class Match(models.Model):
         ('coupe', 'Coupe'),
     )
     equipe = models.ForeignKey(Equipe , on_delete=models.CASCADE)
+    adversaire = models.ForeignKey(Adversaire , on_delete=models.CASCADE)
+    saison = models.ForeignKey(Saison , on_delete=models.CASCADE,default='1')
     journee = models.IntegerField()
     date = models.DateField()
     heure = models.TimeField()
     lieu = models.CharField(max_length=60)
-    adversaire = models.CharField(max_length=40)
     domicile = models.BooleanField(default=False)
+    score_fcpoto = models.IntegerField(default='0')
+    score_adversaire = models.IntegerField(default='0')
     enjeu = models.CharField(max_length=30, choices=ENJEU, default='championnat')
+
+    def __str__(self):
+        return self.adversaire.nom
     
+
+class Blog(models.Model):
+    THEME=(
+        ('vie_club', 'Vie du club'),
+        ('evenement', 'Événement'),
+        ('sortie', 'Sortie'),
+    )
+    theme = models.CharField(max_length = 30, choices=THEME, default='vie_club')
+    titre = models.CharField(max_length= 40)
+    contenu = models.TextField(max_length= 4000)
+    auteur = models.ForeignKey(Profil, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='club/images/blog/',blank=True)
+    date = models.DateTimeField(auto_now_add = True)

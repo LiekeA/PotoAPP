@@ -3,43 +3,360 @@
 
 {% block title %} FC Poto | Accueil {% endblock %}
 {% block content %}
+<div >
+    {% load static %}
+    <img id="teamimg" src="{% static 'image/fullteam.jpg' %}" alt="">
+</div>
+<div class='container-fluid bg-light'>
 
-{% if user.username %}
-Bonjour {{ user.username|title }}
-{% endif %}
-<h1 id="titre">Test</h1>
+    <h1>MATCHS</h1>
+<div class=" row justify-content-center mb-4">
 
-<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
-<br>
-<br>
+    <div class="card d-inline-block col-lg-3 col-sm-1 p-0 ml-4 mr-4">
+        <div class="card-body text-center  p-0">
+            <h5 class="bgblue mb-0 py-1">Équipe à 11</h5>
+            {% for upcoming in upcomings11 %}
+            <h5><span class="badge badge-info px-3 font-weight-light my-1">Prochain match</span></h5>
+            
+            <div class="row justify-content-center">
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">FC POTO {{ upcoming.equipe.equipe|upper }}</p>
+                </div>
+                <div class="col-1 p-0">
+                    {{upcoming.score_fcpoto}}
+                </div>
 
-<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
-<br>
-<br>
+                <div class="col-2 p-0">
+                    <p class="match-info">
+                        {{upcoming.date.day}}/{{upcoming.date.month}}
+                        <br>
+                        {{upcoming.lieu}} 
+                   </p>
+            </div>
+                <div class="col-1 p-0">
+                    {{upcoming.score_adversaire}}
+                </div>
 
-<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
-<br>
-<br>
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">{{upcoming.adversaire.nom}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
-<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
-<br>
-<br>
 
-<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
-<br>
-<br>
 
-<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
-<br>
-<br>
+        <div class="card-body text-center p-0 upcoming-bg">
+            {% for last in last11 %}
 
-<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
-<br>
-<br>
+            <h5><span class="badge badge-secondary px-3 font-weight-light my-2">Dernier match</span></h5>
+            <div class="row justify-content-center">
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">FC POTO {{last.equipe.equipe}}</p>
+                </div>
+                <div class="col-1 p-0">
+                    {{last.score_fcpoto}}
+                </div>
 
-<p>AAAAAAAAAAAAAAAAAAAAAAA</p>
-<br>
-<br>
+                <div class="col-2 p-0">
+                     <p class="match-info">
+                         {{last.date.day}}/{{last.date.month}}
+                         <br>
+                         {{last.lieu}} 
+                    </p>
+             </div>
+                <div class="col-1 p-0">
+                    {{last.score_adversaire}}
+                </div>
+
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">{{last.adversaire.nom}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="card d-inline-block col-lg-3 col-sm-1 p-0 ml-4 mr-4">
+        <div class="card-body text-center  p-0">
+            <h5 class="bgblue mb-0 py-1">Équipe à 7 A</h5>
+            {% for upcoming in upcomings7a %}
+            <h5><span class="badge badge-info px-3 font-weight-light my-1">Prochain match</span></h5>
+            
+            <div class="row justify-content-center">
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">FC POTO {{ upcoming.equipe.equipe|upper }}</p>
+                </div>
+                <div class="col-1 p-0">
+                    {{upcoming.score_fcpoto}}
+                </div>
+
+                <div class="col-2 p-0">
+                    <p class="match-info">
+                        {{upcoming.date.day}}/{{upcoming.date.month}}
+                        <br>
+                        {{upcoming.lieu}} 
+                   </p>
+            </div>
+                <div class="col-1 p-0">
+                    {{upcoming.score_adversaire}}
+                </div>
+
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">{{upcoming.adversaire.nom}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+
+        <div class="card-body text-center p-0 upcoming-bg">
+            {% for last in last7a %}
+
+            <h5><span class="badge badge-secondary px-3 font-weight-light my-2">Dernier match</span></h5>
+            <div class="row justify-content-center">
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">FC POTO {{last.equipe.equipe}}</p>
+                </div>
+                <div class="col-1 p-0">
+                    {{last.score_fcpoto}}
+                </div>
+
+                <div class="col-2 p-0">
+                     <p class="match-info">
+                         {{last.date.day}}/{{last.date.month}}
+                         <br>
+                         {{last.lieu}} 
+                    </p>
+             </div>
+                <div class="col-1 p-0">
+                    {{last.score_adversaire}}
+                </div>
+
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">{{last.adversaire.nom}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+
+
+
+    <div class="card d-inline-block col-lg-3 col-sm-1 p-0 ml-4 mr-4">
+        <div class="card-body text-center  p-0">
+            <h5 class="bgblue mb-0 py-1">Équipe à 7 B</h5>
+            {% for upcoming in upcomings7b %}
+            <h5><span class="badge badge-info px-3 font-weight-light my-1">Prochain match</span></h5>
+            
+            <div class="row justify-content-center">
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">FC POTO {{ upcoming.equipe.equipe|upper }}</p>
+                </div>
+                <div class="col-1 p-0">
+                    {{upcoming.score_fcpoto}}
+                </div>
+
+                <div class="col-2 p-0">
+                    <p class="match-info">
+                        {{upcoming.date.day}}/{{upcoming.date.month}}
+                        <br>
+                        {{upcoming.lieu}} 
+                   </p>
+            </div>
+                <div class="col-1 p-0">
+                    {{upcoming.score_adversaire}}
+                </div>
+
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">{{upcoming.adversaire.nom}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+
+        <div class="card-body text-center p-0 upcoming-bg">
+            {% for last in last7b %}
+
+            <h5><span class="badge badge-secondary px-3 font-weight-light my-2">Dernier match</span></h5>
+            <div class="row justify-content-center">
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">FC POTO {{last.equipe.equipe}}</p>
+                </div>
+                <div class="col-1 p-0">
+                    {{last.score_fcpoto}}
+                </div>
+
+                <div class="col-2 p-0">
+                     <p class="match-info">
+                         {{last.date.day}}/{{last.date.month}}
+                         <br>
+                         {{last.lieu}} 
+                    </p>
+             </div>
+                <div class="col-1 p-0">
+                    {{last.score_adversaire}}
+                </div>
+
+                <div class="col-3 p-0">
+                    <p class="team-matchbox">{{last.adversaire.nom}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- blog -->
+<h1>NOTRE ACTUALITÉ</h1>
+<div class='bg-light mb-4 p-4'>
+
+
+    <div class="card-columns">
+        {% for blog in blogs %}
+
+        <div class="card p-0">
+            {% if blog.photo %}
+            
+            
+                <img  class="card-img-top" src="{{ blog.photo.url }}" alt="Card image" style='width:100%;'>
+            
+
+            {% endif %}
+            <div class="card-body text-dark">
+                <a href="{% url 'club:detailblog' blog.id %}">{{ blog.titre }}</a>
+                <p class="card-text">{{ blog.get_theme_display }}</p>
+                <br>
+
+                <p>{{blog.contenu|striptags|truncatechars:30 }}</p>
+
+                <p class="card-text text-secondary">{{ blog.date|date:'d F Y' }}</p>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class='container-fluid '>
+<div class='row justify-content-center  mb-4'>
+
+
+<!-- reseau pro -->
+<div class='bgblue col-9 p-4'>
+
+    <h1>Réseau Pro</h1>
+
+    <p>Le FC POTO compte une multitude de compétences professionnelles et de matières grises.
+        C’est pourquoi, nous souhaitons les mettre à disposition afin d’aider les membres et partenaires de l’association.
+        De cette manière, chacun a la possibilité de trouver une solution à ses projets personnels et professionnels.
+        D’autre part, nous aidons nos membres dans leur insertion professionnelle, que ce soit au travers de stages, formations, embauches.
+        Le FC POTO contribue à l’améliorer l’avenir de ses membres !</p>
+    <br>
+    <a href="{% url 'club:viewemploi' %}">Tout le réseau pro</a>
+
+</div>
+
+
+<!-- anniv -->
+<div class='col-3'>
+    <h1>Anniversaire</h1>
+
+    <p>Aujourd'hui c'est l'anniversaire de :</p>
+    {% for anniv in today_anniv %}
+    <img src="{{ anniv.photo_face.url }}" alt="" style='width: 80%;'>
+    <br>
+    {{anniv.user.first_name|title }}
+    <br>
+    {{anniv.date_naissance.month }}/{{anniv.date_naissance.year }}
+    {% endfor %}
+
+    <p>C'est leur anniversaire ce mois ci :</p>
+    {% for month in month_anniv %}
+
+    {{ month.user.first_name|title }}
+
+    {% endfor %}
+</div>
+
+
+</div>
+</div>
+
+
+<!-- partenaires -->
+
+
+
+
+<div class='text-center'>
+    <h1>Partenaires</h1>
+
+    <p>Nous remercions nos partenaires qui nous font confiance et qui nous encouragent dans notre démarche et nos valeurs.</p>
+    
+    <div class="slider">
+        <div class="slide-track">
+            {% for partenaire in partenaires %}
+            <div class="slide">
+                
+                    <img src="{{ partenaire.logo_entreprise.url }}" height="150px" alt="" />
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+  <!--   {% for partenaire in partenaires %}
+
+    <div class="card col-3 ">
+        <div class="card-body text-dark">
+            <a href="https://www.darty.com/">
+                <img src="{{ partenaire.logo_entreprise.url }}" height="150px" alt="" />
+            </a>
+            <p class="card-text">Entreprise :{{ partenaire.entreprise }}</p>
+
+            <p class="card-text">Description :{{ partenaire.description }}</p>
+            {% if partenaire.logo_entreprise %}
+            <img src="{{ partenaire.logo_entreprise.url }}" alt="">
+            {% endif %}
+            <br>
+
+        </div>
+    </div>
+
+
+    {% endfor %} -->
+</div>
+
+
+
+
+
 
 
 

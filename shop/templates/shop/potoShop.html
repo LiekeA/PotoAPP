@@ -1,0 +1,29 @@
+{% extends 'fcpoto/base.html' %}
+
+{% block title %} FC POTO | Shop {% endblock %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class='container text-center'>
+   <p>Bienvenue sur le Poto Shop</p>
+
+{% for produit in produits %}
+
+<img src="{{ produit.photo.url }}" alt="">
+<p>{{ produit.nom }}</p>
+<p>{{ produit.description }}</p>
+<p>{{ produit.prix }} €</p>
+
+<a href="{{ produit.url }}" target="blank">
+    <button>J'achète!</button>
+</a>
+{% endfor %}
+
+
+
+
+</div>
+{% endblock %}

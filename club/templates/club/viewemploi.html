@@ -1,0 +1,28 @@
+{% extends 'fcpoto/base.html' %}
+
+
+{% block title %} FC Poto | Réseau Pro {% endblock %}
+{% block content %}
+<div class='container'>
+<div class="row">
+    {% for emploi in emplois %}
+    
+    <div class="card col-3 p-0">
+        <img class="photojoueur" src="{{ emploi.profil.photo_face.url }}" alt="Card image">
+        <div class="card-body text-dark p-0">
+            <a href="#">Joueur : {{ emploi.profil.user.first_name|title }}</a>
+            <p class="card-text">Métier : {{ emploi.titre }}</p>
+            <p class="card-text">Entreprise : {{ emploi.entreprise }}</p>
+            <br>
+
+            <p>Description : {{ emploi.description }}</p>
+        
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+
+
+{% endblock %}
