@@ -45,7 +45,7 @@ class Profil(models.Model):
     reglement = models.BooleanField(default=False)
     #foreignKey
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    equipe = models.ForeignKey(Equipe, on_delete=models.CASCADE)
+    equipe = models.ForeignKey(Equipe, on_delete=models.CASCADE, default='1')
     photo_face = models.ImageField(upload_to='club/images/', blank=True)
     photo_dos = models.ImageField(upload_to='club/images/',blank=True)
     
@@ -68,7 +68,7 @@ class Famille(models.Model):
     prenom = models.CharField(max_length = 30)
     date_naissance =  models.DateField()
     lien = models.CharField(max_length=30, choices= LIEN) 
-    profil = models.ForeignKey(Profil, on_delete=models.CASCADE)
+    profil = models.ForeignKey(Profil, on_delete=models.CASCADE, default='1')
 
 class Saison(models.Model):
     saison = models.CharField(max_length=20)
@@ -78,7 +78,7 @@ class Saison(models.Model):
 class Adversaire(models.Model):
     nom = models.CharField(max_length=30)
     points = models.IntegerField(default='0') 
-    equipe = models.ForeignKey(Equipe , on_delete=models.CASCADE)
+    equipe = models.ForeignKey(Equipe , on_delete=models.CASCADE, default='1')
     saison = models.ForeignKey(Saison , on_delete=models.CASCADE, default='1')
     def __str__(self):
         return self.nom    
@@ -89,8 +89,8 @@ class Match(models.Model):
         ('championnat', 'Championnat'),
         ('coupe', 'Coupe'),
     )
-    equipe = models.ForeignKey(Equipe , on_delete=models.CASCADE)
-    adversaire = models.ForeignKey(Adversaire , on_delete=models.CASCADE)
+    equipe = models.ForeignKey(Equipe , on_delete=models.CASCADE, default='1')
+    adversaire = models.ForeignKey(Adversaire , on_delete=models.CASCADE, default='1')
     saison = models.ForeignKey(Saison , on_delete=models.CASCADE,default='1')
     journee = models.IntegerField()
     date = models.DateField()
@@ -114,6 +114,6 @@ class Blog(models.Model):
     theme = models.CharField(max_length = 30, choices=THEME, default='vie_club')
     titre = models.CharField(max_length= 40)
     contenu = models.TextField(max_length= 4000)
-    auteur = models.ForeignKey(Profil, on_delete=models.CASCADE)
+    auteur = models.ForeignKey(Profil, on_delete=models.CASCADE, default='1')
     photo = models.ImageField(upload_to='club/images/blog/',blank=True)
     date = models.DateTimeField(auto_now_add = True)

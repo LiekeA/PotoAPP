@@ -1,7 +1,8 @@
 from django.forms import ModelForm
-from .models import Profil, Emploi, Famille, Equipe, Match, Adversaire, Blog
+from .models import Profil , Emploi, Famille, Equipe, Match, Adversaire, Blog
 from django import forms
 from django.conf import settings
+
 class ProfilForm(ModelForm):
     date_naissance = forms.DateField(
     localize=True,
