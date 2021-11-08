@@ -6,23 +6,27 @@
 
 <br>
 <br>
+<div >
+    {% load static %}
+    <img id="teamimg" src="{% static 'image/graffpoto.jpg' %}" alt="">
+</div>
 
 <div class='container text-center'>
    <p>Bienvenue sur le Poto Shop</p>
-
+<div class='row'>
 {% for produit in produits %}
-
+<div class='card col-lg-3 col-sm-1'>
+    <p>{{ produit.nom }}</p>
 <img src="{{ produit.photo.url }}" alt="">
-<p>{{ produit.nom }}</p>
 <p>{{ produit.description }}</p>
-<p>{{ produit.prix }} €</p>
+<p>{{ produit.prix }}.00 €</p>
 
 <a href="{{ produit.url }}" target="blank">
-    <button>J'achète!</button>
+    <button class='btn-success'>J'achète!</button>
 </a>
+</div>
 {% endfor %}
-
-
+</div>
 
 
 </div>

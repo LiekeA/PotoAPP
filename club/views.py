@@ -4,10 +4,10 @@ from .models import Profil, Equipe, Match, Adversaire, Emploi, Blog
 from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required
 def createprofile(request):
     if request.method == 'GET':
         return render(request, 'club/createprofil.html', {'form':ProfilForm()})
@@ -26,6 +26,7 @@ def createprofile(request):
             return render(request, 'club/createprofil.html', {'form': ProfilForm(),'error': 'saisie incorrecte'})
  """
 
+@login_required
 def viewprofileprivate(request):
     """ profil = get_object_or_404(Profil, user_id = request.user) """
     try:
@@ -40,11 +41,13 @@ def viewprofileprivate(request):
     except Emploi.DoesNotExist:
         return render(request, 'club/viewprofil.html', {'profil': profil})
 
+
 def viewequipe(request, equipe):
     equipe = get_object_or_404(Equipe, id = equipe )
     joueurs = Profil.objects.filter(equipe_id = equipe).select_related('user')
     return render(request, 'club/viewequipe.html', {'equipe': equipe , 'joueurs':joueurs })
 
+@login_required
 def updateprofil(request):
     profil = get_object_or_404(Profil, user_id=request.user)
     if request.method == 'GET':
@@ -59,6 +62,7 @@ def updateprofil(request):
         except ValueError:
             return render(request, 'club/updateprofil.html' , {'profil':profil, 'form':form, 'error':'erreur'} )
 
+@login_required
 def deleteprofil(request):
     profil = get_object_or_404(Profil, user_id=request.user)
     if request.method == 'POST':
@@ -67,6 +71,7 @@ def deleteprofil(request):
 
 #match
 def viewmatch(request, team):
+    equipe = get_object_or_404(Equipe, id = team )
     now = timezone.now()
     lasts = Match.objects.filter(date__lt=now, equipe_id=team).order_by('-date')[:3].select_related('equipe', 'adversaire')
     upcomings = Match.objects.filter(date__gte=now, equipe_id=team).order_by('date')[:3].select_related('equipe', 'adversaire')
@@ -75,10 +80,19 @@ def viewmatch(request, team):
     matchs = Match.objects.filter(equipe_id=team)
     allteams = Adversaire.objects.filter(equipe_id = team, saison = 1).values_list("points","nom").union(Equipe.objects.filter(id = team).values_list("points","equipe")).order_by('-points')
 
-    return render(request, 'club/viewmatch.html', {'matchs': matchs , 'allteams': allteams , 'lasts':lasts, 'upcomings':upcomings})
+    return render(request, 'club/viewmatch.html', {'equipe': equipe ,'matchs': matchs , 'allteams': allteams , 'lasts':lasts, 'upcomings':upcomings})
+
+
+#classement
+
+def viewclassement(request, team):
+        equipe = get_object_or_404(Equipe, id = team )
+        allteams = Adversaire.objects.filter(equipe_id = team, saison = 1).values_list("points","nom").union(Equipe.objects.filter(id = team).values_list("points","equipe")).order_by('-points')
+        return render(request, 'club/viewclassement.html', {'equipe': equipe ,'allteams': allteams })
 
 
 #reseau pro
+@login_required
 def createemploi(request):
     if request.method == 'GET':
         return render(request, 'club/createemploi.html', {'form':EmploiForm()})
@@ -94,6 +108,7 @@ def createemploi(request):
         except IntegrityError :
             return render(request, 'club/createemploi.html', {'form': EmploiForm(),'error': 'Vous avez déja un profil'})
 
+
 def viewemploi(request):
     if request.method == 'GET':
         emplois = Emploi.objects.all().order_by('-id')
@@ -101,7 +116,7 @@ def viewemploi(request):
 
 
 #Blog
-
+@login_required
 def createblog(request):
     if request.method == 'GET':
         return render(request, 'club/createblog.html', {'form':BlogForm()})

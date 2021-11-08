@@ -10,7 +10,7 @@ from club.models import Match, Emploi, Profil, Blog
 from fcpoto_site.models import Partenaire
 from django.utils import timezone
 from datetime import timedelta, datetime, date
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
@@ -27,8 +27,8 @@ def home(request):
     upcomings7b = Match.objects.filter(date__gte=now, equipe_id=3).order_by('date')[:1].select_related('equipe', 'adversaire')
 
     #3 derniers blog reseau pro
-    emploi = Emploi.objects.all().order_by('-id')[:3].select_related('profil')
-    print(emploi.query)
+    emploi = Emploi.objects.all().order_by('-id')[:4].select_related('profil')
+   
     
     #entreprise partenaires
     partenaires = Partenaire.objects.all()
@@ -37,7 +37,7 @@ def home(request):
     now_day, now_month = now.day, now.month
     today_anniv = Profil.objects.filter(date_naissance__day=now_day, date_naissance__month=now_month)
 
-    month_anniv = Profil.objects.filter(date_naissance__month=now_month, date_naissance__day__gt=now_day)
+    month_anniv = Profil.objects.filter(date_naissance__month=now_month)
     print(month_anniv.query)
 
     #blog
@@ -67,7 +67,7 @@ def signupuser(request):
         else:
             return render(request, 'fcpoto/signupuser.html', {'form': RegisterForm(), 'error': form.errors})
         
-
+@login_required
 def logoutuser(request):
     if request.method == 'POST':
         logout(request)
@@ -91,7 +91,7 @@ def loginuser(request):
             return render(request, 'fcpoto/loginuser.html', {'form': AuthenticationForm(), 'error':"Le pseudo ou le mot de passe n'existe pas"})
         # Return an 'invalid login' error message.
 
-
+@login_required
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -106,6 +106,7 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'fcpoto/change_password.html', {'form': form})
 
+@login_required
 def profile(request):
     if request.method == 'GET':
         return render(request, 'fcpoto/profile.html')

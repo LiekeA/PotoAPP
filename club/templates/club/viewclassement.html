@@ -1,0 +1,49 @@
+{% extends 'fcpoto/base.html' %}
+
+
+{% block title %} FC Poto | Accueil {% endblock %}
+{% block content %}
+
+<br>
+<br>
+
+<ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'club:viewequipe' equipe.id %}">Effectif</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'club:viewmatch' equipe.id %}">Matchs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'club:viewclassement' equipe.id %}">Classement</a>
+    </li>
+  </ul>
+<div>
+    <!-- classement -->
+    <ol>
+      
+      <table class="table table-stripped col-5">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Points</th>
+            <th>Equipe</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for team in allteams %}
+          <tr>
+          <th scope="row"> {{ forloop.counter }} </th>
+          <td>{{ team.0 }}</td>
+          <td>{{ team.1 }}</td>
+        </tr>
+        {% endfor %}
+  
+      </tbody>
+    </table>
+    
+    </ol>
+  
+  </div>
+  
+{% endblock %}

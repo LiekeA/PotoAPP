@@ -26,19 +26,6 @@ SECRET_KEY = 'django-insecure-&=hm5c_u1*wjh%$^4yjn8iss*6k0*-n356y*uvt10fgy61_c1q
 DEBUG = True
 
 if DEBUG:
-  
-    ALLOWED_HOSTS = ['dev.fcpoto.com']
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'lian7334_fcpoto_db',
-            'USER': 'lian7334_simon',
-            'PASSWORD': 'FcPoto202109_',
-            'HOST': 'localhost',
-        }
-    }
-else:
-   
     ALLOWED_HOSTS = ['127.0.0.1']
 
     # Database
@@ -54,6 +41,19 @@ else:
             'PORT': '3306',
         }
     }
+else:
+    ALLOWED_HOSTS = ['dev.fcpoto.com']
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'lian7334_fcpoto_db',
+            'USER': 'lian7334_simon',
+            'PASSWORD': 'FcPoto202109_',
+            'HOST': 'localhost',
+        }
+    }
+   
+   
 
 # Application definition
 
@@ -156,3 +156,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# Close the session when user closes the browser
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

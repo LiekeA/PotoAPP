@@ -3,8 +3,27 @@
 
 {% block title %} FC Poto | Accueil {% endblock %}
 {% block content %}
+<br>
+<br>
+
 <div class='text-center'>
 
+
+    {% if equipe.equipe != 'ancien' %}
+  
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active" href="">Effectif</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'club:viewmatch' equipe.id %}">Matchs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'club:viewclassement' equipe.id %}">Classement</a>
+        </li>
+      </ul>
+      
+    {% endif %}
     
     {% if error %}
     <div class="alert alert-danger" role="alert">
@@ -25,27 +44,27 @@
           
             <div class="card p-0 mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
                         
-                {% if joueur.photo_face %} 
-                <div>
-                    <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
-                    <div class="overlay">
-                        <div class="text">
-                           <p> N°{{ joueur.num_maillot }} </p>
-                        </div>
+              {% if joueur.photo_face %} 
+              <div>
+                  
+                <img class="photojoueur" onmouseover="this.style.display='none'" src='{{ joueur.photo_face.url }}' > 
+                <div class="overlay">
+                  <img class="photojoueur"  onmouseover="this.style.display='inline-block'" src='{{ joueur.photo_dos.url }}'> 
+
+                    <div class="text">
+                       <p> N°{{ joueur.num_maillot }} </p>
+                       <p class="card-text">{{ joueur.user.username|title }}</p>
+                       <p class="card-text">{{ joueur.get_poste_display }}</p>
                     </div>
-                </div>
-                {% endif %}
-                
-                <div class="card-body py-1 bgblue">
-                    <p class="card-text">Surnom : {{ joueur.user.username }}</p>
-                    <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
-                    <p class="card-text">{{ joueur.get_poste_display }}</p>
-                </div>
-                
-                
+                </div> 
+              </div>
+              {% endif %}
+              
+              
+              
+              
 
-            </div>
-
+          </div>
                 {% endif %}
               {% endfor %}
           </div>
@@ -62,26 +81,27 @@
           
             <div class="card p-0 mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
                         
-                {% if joueur.photo_face %} 
-                <div>
-                    <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
-                    <div class="overlay">
-                        <div class="text">
-                           <p> N°{{ joueur.num_maillot }} </p>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                
-                <div class="card-body py-1 bgblue">
-                    <p class="card-text">Surnom : {{ joueur.user.username }}</p>
-                    <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
-                    <p class="card-text">{{ joueur.get_poste_display }}</p>
-                </div>
-                
-                
+              {% if joueur.photo_face %} 
+              <div>
+                  
+                <img class="photojoueur" onmouseover="this.style.display='none'" src='{{ joueur.photo_face.url }}' > 
+                <div class="overlay">
+                  <img class="photojoueur"  onmouseover="this.style.display='inline-block'" src='{{ joueur.photo_dos.url }}'> 
 
-            </div>
+                    <div class="text">
+                       <p> N°{{ joueur.num_maillot }} </p>
+                       <p class="card-text">{{ joueur.user.username|title }}</p>
+                       <p class="card-text">{{ joueur.get_poste_display }}</p>
+                    </div>
+                </div> 
+              </div>
+              {% endif %}
+              
+              
+              
+              
+
+          </div>
 
                 {% endif %}
               {% endfor %}
@@ -100,26 +120,27 @@
           
             <div class="card p-0 mb-3 d-inline-block col-lg-3 col-sm-5 shadow-lg">
                         
-                {% if joueur.photo_face %} 
-                <div>
-                    <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
-                    <div class="overlay">
-                        <div class="text">
-                           <p> N°{{ joueur.num_maillot }} </p>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                
-                <div class="card-body py-1 bgblue">
-                    <p class="card-text">Surnom : {{ joueur.user.username }}</p>
-                    <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
-                    <p class="card-text">{{ joueur.get_poste_display }}</p>
-                </div>
-                
-                
+              {% if joueur.photo_face %} 
+              <div>
+                  
+                <img class="photojoueur" onmouseover="this.style.display='none'" src='{{ joueur.photo_face.url }}' > 
+                <div class="overlay">
+                  <img class="photojoueur"  onmouseover="this.style.display='inline-block'" src='{{ joueur.photo_dos.url }}'> 
 
-            </div>
+                    <div class="text">
+                       <p> N°{{ joueur.num_maillot }} </p>
+                       <p class="card-text">{{ joueur.user.username|title }}</p>
+                       <p class="card-text">{{ joueur.get_poste_display }}</p>
+                    </div>
+                </div> 
+              </div>
+              {% endif %}
+              
+              
+              
+              
+
+          </div>
                 {% endif %}
               {% endfor %}
           </div>
@@ -139,20 +160,21 @@
                         
                         {% if joueur.photo_face %} 
                         <div>
-                            <img class="photojoueur" src="{{ joueur.photo_face.url }}" alt="Card image">
-                            <div class="overlay">
-                                <div class="text">
-                                   <p> N°{{ joueur.num_maillot }} </p>
-                                </div>
-                            </div>
+                            
+                          <img class="photojoueur" onmouseover="this.style.display='none'" src='{{ joueur.photo_face.url }}' > 
+                          <div class="overlay">
+                            <img class="photojoueur"  onmouseover="this.style.display='inline-block'" src='{{ joueur.photo_dos.url }}'> 
+
+                              <div class="text">
+                                 <p> N°{{ joueur.num_maillot }} </p>
+                                 <p class="card-text">{{ joueur.user.username|title }}</p>
+                                 <p class="card-text">{{ joueur.get_poste_display }}</p>
+                              </div>
+                          </div> 
                         </div>
                         {% endif %}
                         
-                        <div class="card-body py-1 bgblue">
-                            <p class="card-text">Surnom : {{ joueur.user.username }}</p>
-                            <p class="card-text">Prénom : {{ joueur.user.first_name|title }}</p>
-                            <p class="card-text">{{ joueur.get_poste_display }}</p>
-                        </div>
+                        
                         
                         
 
@@ -163,11 +185,7 @@
             </div>
         </div>
         
-        {% if equipe.equipe != 'ancien' %}
-        <a href="{% url 'club:viewmatch' equipe.id %}">
-            <button type="submit" class="d-inline-block btn btn-info">Tout les matchs</button>
-        </a>
-        {% endif %}
+       
     
 </div>
 {% endblock %}

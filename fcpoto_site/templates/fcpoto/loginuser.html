@@ -13,13 +13,10 @@
 
 
 
-
+<br>
+<br>
 <div class="session ">
-    <div class="left text-center">
-        {% load static %}
-      <img src="{% static 'image/logoblanc.png' %}" alt="">
-      
-    </div>
+    
     <form action="" class="log-in" method="post">
         {% csrf_token %} 
       <h4>FC <span>Poto</span></h4>
@@ -50,11 +47,11 @@
       </div>
       <button type="submit">Connexion</button>
     </form>
-   
-</div>
-
-
-  <p>Vous n'avez pas de compte? Suivez ce lien : <a href="{% url 'signupuser' %}">Cliquez ici!</a></p>
-  <a href="{% url 'reset_password' %}">Mot de passe oublié?</a></p>
+  
+    <br>
+  </div>
+  
+  <p class='text-center'><a href="{% url 'reset_password' %}">Mot de passe oublié?</a></p>
+ 
 
 {% endblock %}

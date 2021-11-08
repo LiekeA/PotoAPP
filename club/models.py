@@ -29,6 +29,7 @@ class Profil(models.Model):
         ('ailier', 'Ailier'),
         ('attaquant', 'Attaquant'),
         ('arbitre', 'Arbitre'),
+        ('entraineur', 'Entraineur'),
     ) 
     statut = models.CharField(max_length=30, choices= CHOIX)
     poste = models.CharField(max_length=50, choices= POSTES)

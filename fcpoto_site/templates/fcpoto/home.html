@@ -9,10 +9,10 @@
 </div>
 <div class='container-fluid bg-light'>
 
-    <h1>MATCHS</h1>
+    
 <div class=" row justify-content-center mb-4">
 
-    <div class="card d-inline-block col-lg-3 col-sm-1 p-0 ml-4 mr-4">
+    <div class="card d-inline-block col-lg-3  col-sm-10 p-0 ml-4 mr-4">
         <div class="card-body text-center  p-0">
             <h5 class="bgblue mb-0 py-1">Équipe à 11</h5>
             {% for upcoming in upcomings11 %}
@@ -84,7 +84,7 @@
 
 
 
-    <div class="card d-inline-block col-lg-3 col-sm-1 p-0 ml-4 mr-4">
+    <div class="card d-inline-block col-lg-3 col-sm-10 p-0 ml-4 mr-4">
         <div class="card-body text-center  p-0">
             <h5 class="bgblue mb-0 py-1">Équipe à 7 A</h5>
             {% for upcoming in upcomings7a %}
@@ -153,7 +153,7 @@
 
 
 
-    <div class="card d-inline-block col-lg-3 col-sm-1 p-0 ml-4 mr-4">
+    <div class="card d-inline-block col-lg-3 col-sm-10 p-0 ml-4 mr-4">
         <div class="card-body text-center  p-0">
             <h5 class="bgblue mb-0 py-1">Équipe à 7 B</h5>
             {% for upcoming in upcomings7b %}
@@ -224,7 +224,7 @@
 
 
 
-
+<a href='https://waze.com/ul?q=66%20Acacia%20Avenue'>Itinéraire</a>
 
 
 
@@ -233,14 +233,16 @@
 
 
 <!-- blog -->
-<h1>NOTRE ACTUALITÉ</h1>
-<div class='bg-light mb-4 p-4'>
+<div class='container-fluid'>
+<div class='bg-light mb-4 '>
+    <h3>NOTRE ACTUALITÉ</h3>
 
 
-    <div class="card-columns">
+    <div class="row justify-content-center ">
         {% for blog in blogs %}
 
-        <div class="card p-0">
+        <a href="{% url 'club:detailblog' blog.id %}">
+        <div class="card col-lg-3 col-sm-11 p-0  mx-4">
             {% if blog.photo %}
             
             
@@ -251,26 +253,54 @@
             <div class="card-body text-dark">
                 <a href="{% url 'club:detailblog' blog.id %}">{{ blog.titre }}</a>
                 <p class="card-text">{{ blog.get_theme_display }}</p>
-                <br>
+               
 
-                <p>{{blog.contenu|striptags|truncatechars:30 }}</p>
+                <p>{{blog.contenu|striptags|truncatechars:50 }}</p>
 
                 <p class="card-text text-secondary">{{ blog.date|date:'d F Y' }}</p>
 
             </div>
         </div>
+    </a>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+
+<!-- anniv -->
+<div class='container-fluid text-center'>
+    <h3>ANNIVERSAIRE DU MOIS</h3>
+
+    <p>Joyeux anniversaire a toi Poto! On fête ça quand ?</p>
+    <p>Fais péter ton barbeuc avec tout ce qui va bien! On sera tous ensemble près de toi pour célébrer cet évènement!</p>
+    <div class='row'>
+        {% for month in month_anniv %}
+        <div class="card p-0 mb-3 mx-auto d-inline-block col-lg-2 col-sm-3 shadow-lg">
+        
+        <img class="photojoueur" src=" {{ month.photo_face.url }}" alt="Thumbnail image">
+        
+            
+        
+        <div class="card-body py-1 bgblue">
+                <p class='mb-0'> {{ month.user.first_name|title }} </p>
+                <p>  {{ month.date_naissance|date:'d F' }}</p>
+          
+            </div>
+            
+            
+
+        </div>
         {% endfor %}
     </div>
 </div>
 
-<div class='container-fluid '>
-<div class='row justify-content-center  mb-4'>
 
-
+<div class='container-fluid bgblue'>
 <!-- reseau pro -->
-<div class='bgblue col-9 p-4'>
 
-    <h1>Réseau Pro</h1>
+
+    <h3>Réseau Pro</h3>
 
     <p>Le FC POTO compte une multitude de compétences professionnelles et de matières grises.
         C’est pourquoi, nous souhaitons les mettre à disposition afin d’aider les membres et partenaires de l’association.
@@ -283,30 +313,8 @@
 </div>
 
 
-<!-- anniv -->
-<div class='col-3'>
-    <h1>Anniversaire</h1>
-
-    <p>Aujourd'hui c'est l'anniversaire de :</p>
-    {% for anniv in today_anniv %}
-    <img src="{{ anniv.photo_face.url }}" alt="" style='width: 80%;'>
-    <br>
-    {{anniv.user.first_name|title }}
-    <br>
-    {{anniv.date_naissance.month }}/{{anniv.date_naissance.year }}
-    {% endfor %}
-
-    <p>C'est leur anniversaire ce mois ci :</p>
-    {% for month in month_anniv %}
-
-    {{ month.user.first_name|title }}
-
-    {% endfor %}
-</div>
 
 
-</div>
-</div>
 
 
 <!-- partenaires -->
@@ -315,21 +323,21 @@
 
 
 <div class='text-center'>
-    <h1>Partenaires</h1>
+    <h3>Partenaires</h3>
 
     <p>Nous remercions nos partenaires qui nous font confiance et qui nous encouragent dans notre démarche et nos valeurs.</p>
     
-    <div class="slider">
+  <!--   <div class="slider">
         <div class="slide-track">
             {% for partenaire in partenaires %}
             <div class="slide">
-                
-                    <img src="{{ partenaire.logo_entreprise.url }}" height="150px" alt="" />
-                
+                <a href="https://www.darty.com/">
+                    <img src="{{ partenaire.logo_entreprise.url }}" height="150" width="250" alt="" />
+                </a>
             </div>
             {% endfor %}
         </div>
-    </div>
+    </div> -->
 
   <!--   {% for partenaire in partenaires %}
 
@@ -351,6 +359,36 @@
 
 
     {% endfor %} -->
+
+
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        
+        <!-- The slideshow -->
+        <div class="container carousel-inner no-padding">
+          <div class="carousel-item active">
+            {% for partenaire in partenaires %}
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <img src="{{ partenaire.logo_entreprise.url }}" alt="" />
+            </div> 
+            {% endfor %}   
+        
+        </div>
+        
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
 </div>
 
 

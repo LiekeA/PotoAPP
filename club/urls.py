@@ -1,7 +1,7 @@
 from django.urls import path
 from club import views
 from django.conf import settings
-"""from django.conf.urls.static import static"""
+from django.conf.urls.static import static
 
 
 app_name = 'club'
@@ -15,6 +15,7 @@ urlpatterns = [
 
     #match
     path('match/equipe-<int:team>', views.viewmatch, name='viewmatch'),
+    path('classement/equipe-<int:team>', views.viewclassement, name='viewclassement'),
 
     #réseau pro
     path('reseau-pro/creation', views.createemploi, name='createemploi'),
@@ -29,5 +30,5 @@ urlpatterns = [
     path('licence/', views.licencePayment, name='licencePayment'),
 ]
 
-"""if settings.DEBUG:"""
-"""urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)"""
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
