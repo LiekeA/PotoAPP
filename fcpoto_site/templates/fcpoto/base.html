@@ -139,13 +139,13 @@
   <h5 class="headin5_amrc col_white_amrc pt2">Plan De Site</h5>
   <!--headin5_amrc-->
   <ul class="footer_ul_amrc">
-  <li><a href="http://webenlance.com">Accueil</a></li>
-  <li><a href="http://webenlance.com">News</a></li>
-  <li><a href="http://webenlance.com">Equipe et matchs</a></li>
-  <li><a href="http://webenlance.com">Réseau Pro</a></li>
-  <li><a href="http://webenlance.com">Poto Shop</a></li>
-  <li><a href="http://webenlance.com">Connexion</a></li>
-  <li><a href="http://webenlance.com">Inscription</a></li>
+  <li><a href="{% url 'home' %}">Accueil</a></li>
+  <li><a href="{% url 'club:viewblogs' %}">News</a></li>
+  <li><a href="{% url 'club:viewequipe' 1 %}">Equipe et matchs</a></li>
+  <li><a href="{% url 'club:viewemploi' %}">Réseau Pro</a></li>
+  <li><a href="{% url 'shop:potoShop' %}">Poto Shop</a></li>
+  <li><a href="{% url 'loginuser' %}">Connexion</a></li>
+  <li><a href="{% url 'club:licencePayment' %}">Inscription</a></li>
   </ul>
   <!--footer_ul_amrc ends here-->
   </div>
@@ -156,8 +156,8 @@
   <!--headin5_amrc-->
   <ul class="footer_ul_amrc">
   <li><a href="https://www.fsgt31.fr/">Fédération FSGT 31</a></li>
-  <li><a href="http://webenlance.com">CGV</a></li>
-  <li><a href="http://webenlance.com">Mention Légales</a></li>
+  <li><a href="{% url 'cgv' %}">CGV</a></li>
+  <li><a href="{% url 'legal' %}">Mention Légales</a></li>
   </ul>
   <!--footer_ul_amrc ends here-->
   </div>

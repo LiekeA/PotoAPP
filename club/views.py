@@ -73,8 +73,8 @@ def deleteprofil(request):
 def viewmatch(request, team):
     equipe = get_object_or_404(Equipe, id = team )
     now = timezone.now()
-    lasts = Match.objects.filter(date__lt=now, equipe_id=team).order_by('-date')[:3].select_related('equipe', 'adversaire')
-    upcomings = Match.objects.filter(date__gte=now, equipe_id=team).order_by('date')[:3].select_related('equipe', 'adversaire')
+    lasts = Match.objects.filter(date__lt=now, equipe_id=team).order_by('-date').select_related('equipe', 'adversaire')
+    upcomings = Match.objects.filter(date__gte=now, equipe_id=team).order_by('date').select_related('equipe', 'adversaire')
 
 
     matchs = Match.objects.filter(equipe_id=team)

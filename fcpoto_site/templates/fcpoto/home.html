@@ -7,6 +7,7 @@
     {% load static %}
     <img id="teamimg" src="{% static 'image/fullteam.jpg' %}" alt="">
 </div>
+<br>
 <div class='container-fluid bg-light'>
 
     
@@ -242,7 +243,7 @@
         {% for blog in blogs %}
 
         <a href="{% url 'club:detailblog' blog.id %}">
-        <div class="card col-lg-3 col-sm-11 p-0  mx-4">
+        <div class="card col-lg-3 col-sm-11 p-0 mb-3 mx-4">
             {% if blog.photo %}
             
             
@@ -252,7 +253,7 @@
             {% endif %}
             <div class="card-body text-dark">
                 <a href="{% url 'club:detailblog' blog.id %}">{{ blog.titre }}</a>
-                <p class="card-text">{{ blog.get_theme_display }}</p>
+                <h5><span class="badge badge-info px-3 font-weight-light my-2">{{ blog.get_theme_display }}</span></h5>
                
 
                 <p>{{blog.contenu|striptags|truncatechars:50 }}</p>
@@ -264,51 +265,56 @@
     </a>
         {% endfor %}
     </div>
+    <a href="{% url 'club:viewblogs' %}" class="btn btn-info mb-3 mx-auto">Toute l'actualité</a>
 </div>
 </div>
 
 
 <!-- anniv -->
-<div class='container-fluid text-center'>
+<div class='container-fluid '>
     <h3>ANNIVERSAIRE DU MOIS</h3>
 
-    <p>Joyeux anniversaire a toi Poto! On fête ça quand ?</p>
-    <p>Fais péter ton barbeuc avec tout ce qui va bien! On sera tous ensemble près de toi pour célébrer cet évènement!</p>
     <div class='row'>
         {% for month in month_anniv %}
-        <div class="card p-0 mb-3 mx-auto d-inline-block col-lg-2 col-sm-3 shadow-lg">
-        
-        <img class="photojoueur" src=" {{ month.photo_face.url }}" alt="Thumbnail image">
-        
+        <div class="card p-0 mb-3 mx-auto d-inline-block col-lg-2 col-md-2 col-sm-2 shadow-lg">
             
-        
-        <div class="card-body py-1 bgblue">
-                <p class='mb-0'> {{ month.user.first_name|title }} </p>
-                <p>  {{ month.date_naissance|date:'d F' }}</p>
-          
+            <img class="photojoueur" src=" {{ month.photo_face.url }}" alt="Thumbnail image">
+            
+            
+            
+            <div class="card-body py-1 text-center ">
+                <h5 class='mb-0'> {{ month.user.first_name|title }} </h5>
+                <h5 class='mb-0'> {{ month.date_naissance.day }} {{ month.date_naissance|date:'F' }}</h5>
+                
             </div>
             
             
-
+            
         </div>
         {% endfor %}
     </div>
+    <div class='text-center'>
+    <h4>Joyeux anniversaire à toi Poto! On fête ça quand ?</h4>
+    <h4>Fais péter ton barbeuc avec tout ce qui va bien! On sera tous ensemble près de toi pour célébrer cet évènement!</h4>
+</div>
 </div>
 
 
-<div class='container-fluid bgblue'>
+<div class='container-fluid bgblue '>
 <!-- reseau pro -->
 
 
-    <h3>Réseau Pro</h3>
-
+    <h3 class='pt-2'>RÉSEAU PRO</h3>
+    
+    <div class=" text-center mx-auto col-8">
     <p>Le FC POTO compte une multitude de compétences professionnelles et de matières grises.
         C’est pourquoi, nous souhaitons les mettre à disposition afin d’aider les membres et partenaires de l’association.
         De cette manière, chacun a la possibilité de trouver une solution à ses projets personnels et professionnels.
         D’autre part, nous aidons nos membres dans leur insertion professionnelle, que ce soit au travers de stages, formations, embauches.
         Le FC POTO contribue à l’améliorer l’avenir de ses membres !</p>
+    </div>
     <br>
-    <a href="{% url 'club:viewemploi' %}">Tout le réseau pro</a>
+    <a href="{% url 'club:viewemploi' %}" class="btn btn-info mb-3">Tout le réseau pro</a>
 
 </div>
 
@@ -322,8 +328,9 @@
 
 
 
-<div class='text-center'>
-    <h3>Partenaires</h3>
+<div class='container-fluid'>
+    <h3 class='pt-2'>PARTENAIRES</h3>
+    <div class='text-center'>
 
     <p>Nous remercions nos partenaires qui nous font confiance et qui nous encouragent dans notre démarche et nos valeurs.</p>
     
@@ -389,8 +396,9 @@
           <span class="carousel-control-next-icon"></span>
         </a>
       </div>
-</div>
-
+    </div>
+    </div>
+      
 
 
 

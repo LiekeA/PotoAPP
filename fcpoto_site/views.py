@@ -41,7 +41,7 @@ def home(request):
     print(month_anniv.query)
 
     #blog
-    blogs = Blog.objects.all().order_by('-date')[:3]
+    blogs = Blog.objects.all().order_by('-date')[:6]
 
    
 
@@ -110,3 +110,11 @@ def change_password(request):
 def profile(request):
     if request.method == 'GET':
         return render(request, 'fcpoto/profile.html')
+
+def cgv(request):
+    if request.method == 'GET':
+        return render(request, 'fcpoto/cgv.html')
+
+def legal(request):
+    if request.method == 'GET':
+        return render(request, 'fcpoto/legal.html')

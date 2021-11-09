@@ -1,7 +1,7 @@
 {% extends 'fcpoto/base.html' %}
 
 
-{% block title %} FC Poto | Accueil {% endblock %}
+{% block title %} FC Poto | Classement {% endblock %}
 {% block content %}
 
 <br>
@@ -18,11 +18,12 @@
       <a class="nav-link active" href="{% url 'club:viewclassement' equipe.id %}">Classement</a>
     </li>
   </ul>
+
 <div>
     <!-- classement -->
     <ol>
       
-      <table class="table table-stripped col-5">
+      <table class="table table-stripped col-6 offset-3">
         <thead class="thead-dark">
           <tr>
             <th>#</th>

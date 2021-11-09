@@ -89,6 +89,7 @@ class Match(models.Model):
     ENJEU =(
         ('championnat', 'Championnat'),
         ('coupe', 'Coupe'),
+        ('amical', 'Amical'),
     )
     equipe = models.ForeignKey(Equipe , on_delete=models.CASCADE, default='1')
     adversaire = models.ForeignKey(Adversaire , on_delete=models.CASCADE, default='1')
@@ -118,3 +119,5 @@ class Blog(models.Model):
     auteur = models.ForeignKey(Profil, on_delete=models.CASCADE, default='1')
     photo = models.ImageField(upload_to='club/images/blog/',blank=True)
     date = models.DateTimeField(auto_now_add = True)
+    def __str__(self):
+        return self.titre

@@ -27,6 +27,11 @@ urlpatterns = [
     #accueil
     path('', views.home, name='home'),
 
+    #cgv mention legale
+    path('cgv', views.cgv, name='cgv'),
+    path('mentions-legales', views.legal, name='legal'),
+
+
     #authentification
     path('inscription/', views.signupuser, name='signupuser'),
     path('connexion/', views.loginuser , name='loginuser'),

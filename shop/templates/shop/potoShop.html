@@ -4,18 +4,17 @@
 
 {% block content %}
 
-<br>
-<br>
+
 <div >
     {% load static %}
     <img id="teamimg" src="{% static 'image/graffpoto.jpg' %}" alt="">
 </div>
 
 <div class='container text-center'>
-   <p>Bienvenue sur le Poto Shop</p>
+   <h3>Bienvenue sur le Poto Shop</h3>
 <div class='row'>
 {% for produit in produits %}
-<div class='card col-lg-3 col-sm-1'>
+<div class='card col-lg-3 col-sm-3'>
     <p>{{ produit.nom }}</p>
 <img src="{{ produit.photo.url }}" alt="">
 <p>{{ produit.description }}</p>

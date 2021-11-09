@@ -9,6 +9,7 @@
 <div class='text-center'>
 
 
+
     {% if equipe.equipe != 'ancien' %}
   
     <ul class="nav nav-pills nav-fill">
@@ -51,11 +52,9 @@
                 <div class="overlay">
                   <img class="photojoueur"  onmouseover="this.style.display='inline-block'" src='{{ joueur.photo_dos.url }}'> 
 
-                    <div class="text">
-                       <p> N°{{ joueur.num_maillot }} </p>
-                       <p class="card-text">{{ joueur.user.username|title }}</p>
-                       <p class="card-text">{{ joueur.get_poste_display }}</p>
-                    </div>
+                  <div class="text ">                             
+                    <p class="card-text">{{ joueur.get_poste_display }}</p>
+                 </div>
                 </div> 
               </div>
               {% endif %}
@@ -88,11 +87,9 @@
                 <div class="overlay">
                   <img class="photojoueur"  onmouseover="this.style.display='inline-block'" src='{{ joueur.photo_dos.url }}'> 
 
-                    <div class="text">
-                       <p> N°{{ joueur.num_maillot }} </p>
-                       <p class="card-text">{{ joueur.user.username|title }}</p>
-                       <p class="card-text">{{ joueur.get_poste_display }}</p>
-                    </div>
+                  <div class="text ">                             
+                    <p class="card-text">{{ joueur.get_poste_display }}</p>
+                 </div>
                 </div> 
               </div>
               {% endif %}
@@ -127,11 +124,9 @@
                 <div class="overlay">
                   <img class="photojoueur"  onmouseover="this.style.display='inline-block'" src='{{ joueur.photo_dos.url }}'> 
 
-                    <div class="text">
-                       <p> N°{{ joueur.num_maillot }} </p>
-                       <p class="card-text">{{ joueur.user.username|title }}</p>
-                       <p class="card-text">{{ joueur.get_poste_display }}</p>
-                    </div>
+                  <div class="text ">                             
+                    <p class="card-text">{{ joueur.get_poste_display }}</p>
+                 </div>
                 </div> 
               </div>
               {% endif %}
@@ -165,9 +160,7 @@
                           <div class="overlay">
                             <img class="photojoueur"  onmouseover="this.style.display='inline-block'" src='{{ joueur.photo_dos.url }}'> 
 
-                              <div class="text">
-                                 <p> N°{{ joueur.num_maillot }} </p>
-                                 <p class="card-text">{{ joueur.user.username|title }}</p>
+                              <div class="text ">                             
                                  <p class="card-text">{{ joueur.get_poste_display }}</p>
                               </div>
                           </div> 

@@ -24,21 +24,100 @@
   <br>
   
   <div>
-    a
+    
+    
+    
+
     {% for upcoming in upcomings %}
-    
-    {{ upcoming.lieu }}
+    <div class="card d-inline-block col-lg-3 col-sm-10 p-0 ml-4 mr-4">
+      <div class="card-body text-center  p-0">
+          <h5><span class="badge badge-info px-3 font-weight-light my-1">Match à venir</span></h5>
+          
+          <div class="row justify-content-center">
+              <div class="col-3 p-0">
+                  <p class="team-matchbox">FC POTO {{ upcoming.equipe.equipe|upper }}</p>
+              </div>
+              <div class="col-1 p-0">
+                  {{upcoming.score_fcpoto}}
+              </div>
 
-    {% endfor %}
-    
+              <div class="col-2 p-0">
+                  <p class="match-info">
+                      {{upcoming.date.day}}/{{upcoming.date.month}}
+                      <br>
+                      {{upcoming.lieu}} 
+                 </p>
+          </div>
+              <div class="col-1 p-0">
+                  {{upcoming.score_adversaire}}
+              </div>
+
+              <div class="col-3 p-0">
+                  <p class="team-matchbox">{{upcoming.adversaire.nom}}</p>
+              </div>
+              <div class='row'>
+                <div class="col-6">
+                    <p class="team-matchbox">Saison : {{ upcoming.saison }}</p>
+                    <p class="team-matchbox"> {{ upcoming.enjeu }}</p>
+                </div>
+                <div class="col-6">
+                    <p class="team-matchbox">Journée : {{ upcoming.journee }}</p>
+                </div>
+              </div>
+          </div>
+        </div>
+        </div>
+        {% endfor %}
+
+
+
     {% for last in lasts %}
+    <div class="card d-inline-block col-lg-3 col-sm-10 p-0 ml-4 mr-4">
 
-    {{ last.lieu }}
+    <div class="card-body text-center p-0 upcoming-bg">
 
-    {% endfor %}
+      <h5><span class="badge badge-secondary px-3 font-weight-light my-2">Match terminé</span></h5>
+      <div class="row justify-content-center">
+          <div class="col-3 p-0">
+              <p class="team-matchbox">FC POTO {{last.equipe.equipe}}</p>
+          </div>
+          <div class="col-1 p-0">
+              {{last.score_fcpoto}}
+          </div>
+
+          <div class="col-2 p-0">
+               <p class="match-info">
+                   {{last.date.day}}/{{last.date.month}}
+                   <br>
+                   {{last.lieu}} 
+              </p>
+       </div>
+          <div class="col-1 p-0">
+              {{last.score_adversaire}}
+          </div>
+
+          <div class="col-3 p-0">
+              <p class="team-matchbox">{{last.adversaire.nom}}</p>
+          </div>
+          <div class='row'>
+            <div class="col-6">
+                <p class="team-matchbox">Saison : {{ upcoming.saison }}</p>
+                <p class="team-matchbox"> {{ upcoming.enjeu }}</p>
+            </div>
+            <div class="col-6">
+                <p class="team-matchbox">Journée : {{ upcoming.journee }}</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  
   </div>
+  {% endfor %}
 
-<div class="row justify-content-center">
+
+
+
+<!--  <div class="row justify-content-center">
 {% for match in matchs %}
 
   <div class="card d-inline-block col-lg-3 col-sm-1 p-0 ml-4 mr-4">
@@ -72,7 +151,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   
   
 
@@ -107,8 +186,8 @@
     </div>
   </div> -->
   
-  {% endfor %}
-</div>
+ <!--  {% endfor %} -->
+<!-- </div> -->
  
 
 
