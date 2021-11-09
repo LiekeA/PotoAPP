@@ -26,6 +26,20 @@ SECRET_KEY = 'django-insecure-&=hm5c_u1*wjh%$^4yjn8iss*6k0*-n356y*uvt10fgy61_c1q
 DEBUG = True
 
 if DEBUG:
+    
+    ALLOWED_HOSTS = ['dev.fcpoto.com']
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'lian7334_fcpoto_db',
+            'USER': 'lian7334_simon',
+            'PASSWORD': 'FcPoto202109_',
+            'HOST': 'localhost',
+        }
+    }
+   
+   
+else:
     ALLOWED_HOSTS = ['127.0.0.1']
 
     # Database
@@ -41,18 +55,6 @@ if DEBUG:
             'PORT': '3306',
         }
     }
-else:
-    ALLOWED_HOSTS = ['dev.fcpoto.com']
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'lian7334_fcpoto_db',
-            'USER': 'lian7334_simon',
-            'PASSWORD': 'FcPoto202109_',
-            'HOST': 'localhost',
-        }
-    }
-   
    
 
 # Application definition
