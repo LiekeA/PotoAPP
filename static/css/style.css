@@ -113,6 +113,9 @@ body {
   }
   .navbar .navbar-brand,
   .navbar .nav-link {
+    color: #ffffff;
+  }
+  .navbar.active .nav-link {
     color: #16264A;
   }
 }
@@ -143,7 +146,7 @@ body {
 }
 
 .team-matchbox{
-  font-size:12px;
+  font-size:14px;
 }
 
 .versus{
@@ -215,7 +218,7 @@ h5{
   color: white;
   font-size: 20px;
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -266,7 +269,7 @@ h5{
 h4 {
   font-size: 24px;
   font-weight: 600;
-  color: #000;
+  color: #16264A;
   opacity: 0.85;
 }
 

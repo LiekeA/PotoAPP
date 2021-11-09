@@ -27,6 +27,23 @@ DEBUG = True
 
 if DEBUG:
     
+    ALLOWED_HOSTS = ['dev.fcpoto.com']
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'lian7334_fcpoto_db',
+            'USER': 'lian7334_simon',
+            'PASSWORD': 'FcPoto202109_',
+            'HOST': 'localhost',
+        }
+    }   
+   
+   
+else:
+ 
+   
+
+    
     ALLOWED_HOSTS = ['127.0.0.1']
 
     # Database
@@ -40,21 +57,6 @@ if DEBUG:
             'PASSWORD': 'FcPoto202109_',
             'HOST': 'localhost',
             'PORT': '3306',
-        }
-    }
-   
-   
-else:
- 
-   
-    ALLOWED_HOSTS = ['dev.fcpoto.com']
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'lian7334_fcpoto_db',
-            'USER': 'lian7334_simon',
-            'PASSWORD': 'FcPoto202109_',
-            'HOST': 'localhost',
         }
     }
 # Application definition
