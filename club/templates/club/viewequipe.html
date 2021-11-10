@@ -3,28 +3,37 @@
 
 {% block title %} FC Poto | Accueil {% endblock %}
 {% block content %}
-<br>
-<br>
+
 
 <div class='text-center'>
 
+  {% load static %}
+  {% if equipe.equipe == '11' %}
+
+    <img class='teamimg mb-4' src="{% static 'image/fullteam.jpg' %}" alt="">
+    
+  {% elif equipe.equipe == '7A' %}
+    <img class='teamimg mb-4' src="{% static 'image/7a.png' %}" alt="">
+    
+  {% elif equipe.equipe == '7B' %}
+    <img class='teamimg mb-4' src="{% static 'image/7b.png' %}" alt="">
+  
+  {% endif %}
 
 
-    {% if equipe.equipe != 'ancien' %}
   
     <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
+        <li class="nav-item mx-2">
           <a class="nav-link active" href="">Effectif</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item mx-2">
           <a class="nav-link" href="{% url 'club:viewmatch' equipe.id %}">Matchs</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item mx-2">
           <a class="nav-link" href="{% url 'club:viewclassement' equipe.id %}">Classement</a>
         </li>
       </ul>
       
-    {% endif %}
     
     {% if error %}
     <div class="alert alert-danger" role="alert">
@@ -33,7 +42,8 @@
     {% endif %}
 
     
-    {{ equipe }}
+    <br>
+    Équipe {{ equipe }}
     
         <h2>Gardien</h2>
         <div class="container">

@@ -29,7 +29,7 @@ body {
   height: 123px;
 }
 /* photo header */
-#teamimg {
+.teamimg {
   width: 100%;
   display: block;
   margin-left: auto;
@@ -186,7 +186,16 @@ h5{
 }
 
 /*----------------------- Page effectif -------------*/
+.nav-fill .nav-item{
 
+  border: solid 1px;
+  border-radius: 0.5em;
+}
+
+.nav-fill .nav-item:hover{
+ color: #FFF;
+ background-color: #17a2b8;
+}
 
 .photojoueur {
   display: block;
@@ -505,8 +514,8 @@ input:focus {
   top: 0;
 }
 .slider .slide-track {
-  -webkit-animation: scroll 40s linear infinite;
-          animation: scroll 40s linear infinite;
+  -webkit-animation: scroll 70s linear infinite;
+          animation: scroll 70s linear infinite;
   display: flex;
   width: calc(250px * 14);
 }

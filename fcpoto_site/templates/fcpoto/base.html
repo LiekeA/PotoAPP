@@ -36,7 +36,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
- <title> {% block title %} {% endblock %}  </title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'image/logo.png' %}">
+
+  <title> {% block title %} {% endblock %}  </title>
 
   </head>
   
@@ -79,7 +81,6 @@
                         <a class="dropdown-item" href="{% url 'club:viewequipe' 1 %}">Équipe à 11</a>
                         <a class="dropdown-item" href="{% url 'club:viewequipe' 2 %}">Équipe A à 7 </a>
                         <a class="dropdown-item" href="{% url 'club:viewequipe' 3 %}">Équipe B à 7</a>
-                        <a class="dropdown-item" href="{% url 'club:viewequipe' 4 %}">Les anciens membres</a>
                       </div>
                     </li>
                   
@@ -155,7 +156,7 @@
   <h5 class="headin5_amrc col_white_amrc pt2">Liens utiles</h5>
   <!--headin5_amrc-->
   <ul class="footer_ul_amrc">
-  <li><a href="https://www.fsgt31.fr/">Fédération FSGT 31</a></li>
+  <li><a target="blank" href="https://www.fsgt31.fr/">Fédération FSGT 31</a></li>
   <li><a href="{% url 'cgv' %}">CGV</a></li>
   <li><a href="{% url 'legal' %}">Mention Légales</a></li>
   </ul>
@@ -182,7 +183,8 @@
   <div class="container">
   
   <!--foote_bottom_ul_amrc ends here-->
-  <p class="text-center">Copyright @2021 | FC Poto</p>
+  <p class="text-center">  &copy;Copyright 2022 | FC POTO</p>
+  <p class="text-center">Réalisation <a href="https://propulsion-digitale.com/">Propulsion digitale</a> </p>
   
 
   </div>

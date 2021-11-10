@@ -87,6 +87,7 @@ def viewmatch(request, team):
 
 def viewclassement(request, team):
         equipe = get_object_or_404(Equipe, id = team )
+        
         allteams = Adversaire.objects.filter(equipe_id = team, saison = 1).values_list("points","nom").union(Equipe.objects.filter(id = team).values_list("points","equipe")).order_by('-points')
         return render(request, 'club/viewclassement.html', {'equipe': equipe ,'allteams': allteams })
 

@@ -4,22 +4,44 @@
 {% block title %} FC Poto | Classement {% endblock %}
 {% block content %}
 
-<br>
-<br>
+
+{% load static %}
+{% if equipe.equipe == '11' %}
+
+  <img class='teamimg mb-4' src="{% static 'image/fullteam.jpg' %}" alt="">
+  
+{% elif equipe.equipe == '7A' %}
+  <img class='teamimg mb-4' src="{% static 'image/7a.png' %}" alt="">
+  
+{% elif equipe.equipe == '7B' %}
+  <img class='teamimg mb-4' src="{% static 'image/7b.png' %}" alt="">
+
+{% endif %}
 
 <ul class="nav nav-pills nav-fill">
-    <li class="nav-item">
+    <li class="nav-item mx-2">
       <a class="nav-link" href="{% url 'club:viewequipe' equipe.id %}">Effectif</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item mx-2">
       <a class="nav-link" href="{% url 'club:viewmatch' equipe.id %}">Matchs</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item mx-2">
       <a class="nav-link active" href="{% url 'club:viewclassement' equipe.id %}">Classement</a>
     </li>
   </ul>
 
+  <br>
+  <div class='text-center'>
+    {% if equipe.equipe != '11' %}
+    <p>Retrouvez plus d'info sur le site de la fédération:</p><a target='blank' href="https://fsgt31.fr/les-commissions/10-football-a-7.html" class="btn btn-info mb-3 ">FSGT 31</a>
+    {% else %}
+    <p>Retrouvez plus d'info sur le site de la fédération:</p><a target='blank' href="https://fsgt31.fr/les-commissions/11-football-a-11.html" class="btn btn-info mb-3 ">FSGT 31</a>
+    {% endif %}
+  </div>
+
 <div>
+  <br>
+  <br>
     <!-- classement -->
     <ol>
       

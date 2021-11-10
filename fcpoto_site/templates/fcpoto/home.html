@@ -5,7 +5,7 @@
 {% block content %}
 <div >
     {% load static %}
-    <img id="teamimg" src="{% static 'image/fullteam.jpg' %}" alt="">
+    <img class="teamimg" src="{% static 'image/fullteam.jpg' %}" alt="">
 </div>
 <br>
 <div class='container-fluid bg-light'>
@@ -265,14 +265,16 @@
     </a>
         {% endfor %}
     </div>
+    <div class='text-center'>
     <a href="{% url 'club:viewblogs' %}" class="btn btn-info mb-3 mx-auto">Toute l'actualité</a>
+</div>
 </div>
 </div>
 
 
 <!-- anniv -->
 <div class='container-fluid '>
-    <h3>ANNIVERSAIRE DU MOIS</h3>
+    <h3>ANNIVERSAIRES DU MOIS</h3>
 
     <div class='row'>
         {% for month in month_anniv %}
@@ -293,9 +295,10 @@
         </div>
         {% endfor %}
     </div>
-    <div class='text-center'>
+    <div >
     <h4>Joyeux anniversaire à toi Poto! On fête ça quand ?</h4>
     <h4>Fais péter ton barbeuc avec tout ce qui va bien! On sera tous ensemble près de toi pour célébrer cet évènement!</h4>
+    <br>
 </div>
 </div>
 
@@ -305,17 +308,21 @@
 
 
     <h3 class='pt-2'>RÉSEAU PRO</h3>
-    
-    <div class=" text-center mx-auto col-8">
-    <p>Le FC POTO compte une multitude de compétences professionnelles et de matières grises.
-        C’est pourquoi, nous souhaitons les mettre à disposition afin d’aider les membres et partenaires de l’association.
-        De cette manière, chacun a la possibilité de trouver une solution à ses projets personnels et professionnels.
-        D’autre part, nous aidons nos membres dans leur insertion professionnelle, que ce soit au travers de stages, formations, embauches.
-        Le FC POTO contribue à l’améliorer l’avenir de ses membres !</p>
+    <div class='text-center'>
+        <img src="{% static 'image/reseau.png' %}" alt="">
     </div>
     <br>
-    <a href="{% url 'club:viewemploi' %}" class="btn btn-info mb-3">Tout le réseau pro</a>
-
+    <div class='row'>
+    <div class="col-8">
+    <h5>Le FC POTO compte une multitude de compétences professionnelles et de matières grises.</h5>
+    <h5>   Venez découvrir et enrichir le réseau ici :
+    </h5>
+    </div>
+</div>
+    
+    <div class='text-center'>
+        <a href="{% url 'club:viewemploi' %}" class="btn btn-info mb-3 ">Tout le réseau pro</a>
+    </div>
 </div>
 
 
@@ -330,23 +337,23 @@
 
 <div class='container-fluid'>
     <h3 class='pt-2'>PARTENAIRES</h3>
-    <div class='text-center'>
+    <div>
 
     <p>Nous remercions nos partenaires qui nous font confiance et qui nous encouragent dans notre démarche et nos valeurs.</p>
     
-  <!--   <div class="slider">
+    <div class="slider">
         <div class="slide-track">
             {% for partenaire in partenaires %}
             <div class="slide">
-                <a href="https://www.darty.com/">
-                    <img src="{{ partenaire.logo_entreprise.url }}" height="150" width="250" alt="" />
+                <a href="#">
+                    <img src="{{ partenaire.logo_entreprise.url }}" height="auto" width="200" alt="" />
                 </a>
             </div>
             {% endfor %}
         </div>
-    </div> -->
+    </div> 
 
-  <!--   {% for partenaire in partenaires %}
+<!--   {% for partenaire in partenaires %}
 
     <div class="card col-3 ">
         <div class="card-body text-dark">
@@ -368,16 +375,16 @@
     {% endfor %} -->
 
 
-    <div id="demo" class="carousel slide" data-ride="carousel">
+  <!--   <div id="demo" class="carousel slide" data-ride="carousel">
 
-        <!-- Indicators -->
+        
         <ul class="carousel-indicators">
           <li data-target="#demo" data-slide-to="0" class="active"></li>
           <li data-target="#demo" data-slide-to="1"></li>
           <li data-target="#demo" data-slide-to="2"></li>
         </ul>
         
-        <!-- The slideshow -->
+        
         <div class="container carousel-inner no-padding">
           <div class="carousel-item active">
             {% for partenaire in partenaires %}
@@ -388,7 +395,6 @@
         
         </div>
         
-        <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
           <span class="carousel-control-prev-icon"></span>
         </a>
@@ -396,7 +402,7 @@
           <span class="carousel-control-next-icon"></span>
         </a>
       </div>
-    </div>
+    </div> -->
     </div>
       
 
