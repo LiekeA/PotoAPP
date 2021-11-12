@@ -35,7 +35,7 @@
                    </p>
             </div>
                 <div class="col-1 p-0">
-                    {{upcoming.score_adversaire}}
+                    {{upcoming.score_adversaire}} &nbsp; 
                 </div>
 
                 <div class="col-3 p-0">
@@ -256,7 +256,7 @@
                 <h5><span class="badge badge-info px-3 font-weight-light my-2">{{ blog.get_theme_display }}</span></h5>
                
 
-                <p>{{blog.contenu|striptags|truncatechars:50 }}</p>
+                <p>{{blog.contenu|striptags|truncatechars:70 }}</p>
 
                 <p class="card-text text-secondary">{{ blog.date|date:'d F Y' }}</p>
 
@@ -296,8 +296,8 @@
         {% endfor %}
     </div>
     <div >
-    <h4>Joyeux anniversaire à toi Poto! On fête ça quand ?</h4>
-    <h4>Fais péter ton barbeuc avec tout ce qui va bien! On sera tous ensemble près de toi pour célébrer cet évènement!</h4>
+    <p>Joyeux anniversaire à toi Poto! On fête ça quand ?</p>
+    <p>Fais péter ton barbeuc avec tout ce qui va bien! On sera tous ensemble près de toi pour célébrer cet évènement!</p>
     <br>
 </div>
 </div>
@@ -309,15 +309,11 @@
 
     <h3 class='pt-2'>RÉSEAU PRO</h3>
     <div class='text-center'>
-        <img src="{% static 'image/reseau.png' %}" alt="">
+        <img src="{% static 'image/reseau2.jpg' %}" class="w-100" alt="">
     </div>
     <br>
     <div class='row'>
-    <div class="col-8">
-    <h5>Le FC POTO compte une multitude de compétences professionnelles et de matières grises.</h5>
-    <h5>   Venez découvrir et enrichir le réseau ici :
-    </h5>
-    </div>
+   
 </div>
     
     <div class='text-center'>
@@ -336,7 +332,7 @@
 
 
 <div class='container-fluid'>
-    <h3 class='pt-2'>PARTENAIRES</h3>
+    <h3 class='pt-2'>NOS PARTENAIRES</h3>
     <div>
 
     <p>Nous remercions nos partenaires qui nous font confiance et qui nous encouragent dans notre démarche et nos valeurs.</p>

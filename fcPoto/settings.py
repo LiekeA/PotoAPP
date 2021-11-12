@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-&=hm5c_u1*wjh%$^4yjn8iss*6k0*-n356y*uvt10fgy61_c1q
 DEBUG = True
 
 if DEBUG:
-    
-    ALLOWED_HOSTS = ['dev.fcpoto.com', 'www.fcpoto.com']
+
+    ALLOWED_HOSTS = ['dev.fcpoto.com', 'www.fcpoto.com', 'fcpoto.com']
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -37,6 +37,7 @@ if DEBUG:
             'HOST': 'localhost',
         }
     } 
+   
    
 else:
  
@@ -55,7 +56,6 @@ else:
             'PORT': '3306',
         }
     }
-   
 
     
    

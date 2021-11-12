@@ -7,7 +7,7 @@
 
 <div >
     {% load static %}
-    <img id="teamimg" src="{% static 'image/graffpoto.jpg' %}" alt="">
+    <img class="teamimg" src="{% static 'image/graffpoto.jpg' %}" alt="">
 </div>
 
 <div class="container text-center">
@@ -17,7 +17,7 @@
 
 <div class="card col-lg-3 col-sm-4 mx-3 my-2">
     <p>{{ produit.nom }}</p>
-<img class="photojoueur" src="{{ produit.photo.url }}" alt=""  >
+<img class='produit mx-auto' src="{{ produit.photo.url }}" alt=""  >
 <p>{{ produit.description }}</p>
 <p>{{ produit.prix }}.00 €</p>
 
